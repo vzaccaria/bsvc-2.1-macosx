@@ -1,4 +1,17 @@
 
+
+
+Introduction
+============
+This is a port of the Motorola 68000 assembler and simulation framework to Mac OS X (Mavericks). The distribution was originally put together by Bradford W. Mott. 
+
+The port is ongoing and, for the foreseeable future, only the M68000 will work. Besides, I am only interested in porting the basic CLI utils (`asm` and `sim68000`), leaving out all the Windows XP and Tcl/Tk stuff, since who uses them anyway?
+
+What follows is the original Announce.doc. I ported it to markdown since we are in 2014 after all..
+
+Original Announce
+=================
+
     BBBBBB   SSSSS  VVV VVV  CCCCC
      BB  BB SS   SS VV  VV  CC   CC
      BB  BB SS      VV  VV  CC     
@@ -6,15 +19,6 @@
      BB  BB      SS VV  VV  CC   
      BB  BB SS   SS  VVVV   CC   CC                  Release 2.1              
     BBBBBB   SSSSS    VV     CCCCC 
-
-
-Introduction
-============
-This is a port of the Motorola 68000 assembler and simulation framework to Mac OS X (Mavericks). The distribution was originally put together by Bradford W. Mott. 
-
-The port is ongoing and, for the foreseeable future, only the M68000 will work.
-
-What follows is the original Announce.doc. I ported it to markdown since we are in 2014 after all..
 
 BSVC is a microprocessor simulation framework written in C++ and Tcl/Tk.
 It was developed as a senior design project at North Carolina State
