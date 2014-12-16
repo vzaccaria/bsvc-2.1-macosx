@@ -29,7 +29,7 @@
 #include <stdio.h>
 #include "asm.h"
 
-printError(outFile, errorCode, lineNum)
+void printError(outFile, errorCode, lineNum)
 FILE *outFile;
 int errorCode, lineNum;
 {

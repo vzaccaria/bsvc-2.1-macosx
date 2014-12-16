@@ -47,18 +47,20 @@
 
 #include <stdio.h>
 #include "asm.h"
+#include "codegen.h"
 
 extern int loc;
 extern char pass2;
 
-
+void moveq(int, int, opDescriptor*, opDescriptor*, int*);
+void quickMath(int, int, opDescriptor*, opDescriptor*, int*);
 /***********************************************************************
  *
  *	Function move builds the MOVE and MOVEA instructions
  *
  ***********************************************************************/
 
-move(mask, size, source, dest, errorPtr)
+void move(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -99,7 +101,7 @@ char destCode;
  *
  ***********************************************************************/
 
-zeroOp(mask, size, errorPtr)
+void zeroOp(mask, size, errorPtr)
 int mask, size;
 int *errorPtr;
 {
@@ -131,7 +133,7 @@ int *errorPtr;
  *
  ***********************************************************************/
 
-oneOp(mask, size, source, dest, errorPtr)
+void oneOp(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -163,7 +165,7 @@ int *errorPtr;
  *
  ***********************************************************************/
 
-arithReg(mask, size, source, dest, errorPtr)
+void arithReg(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -191,7 +193,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-arithAddr(mask, size, source, dest, errorPtr)
+void arithAddr(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -216,7 +218,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-immedInst(mask, size, source, dest, errorPtr)
+void immedInst(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -228,7 +230,8 @@ unsigned short type;
 	/* Check the mask to determine the operation */
 	type = mask & 0xFF00;
 	if ((type == 0x0600 || type == 0x0400)
-	    && source->backRef && source->data >= 1 && source->data <= 8)
+	    && source->backRef && source->data >= 1 && source->data <= 8) {
+
 			if (type == 0x0600) {
 				/* Assemble as ADDQ */
 				quickMath(0x5000 | (mask & 0x00C0), size,
@@ -241,6 +244,7 @@ unsigned short type;
 					  source, dest, errorPtr);
 				return;
 				}
+		}
 
 	/* Otherwise assemble as an ordinary instruction */
 	if (pass2)
@@ -260,7 +264,7 @@ unsigned short type;
  ***********************************************************************/
 
 
-quickMath(mask, size, source, dest, errorPtr)
+void quickMath(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -284,7 +288,7 @@ int status;
  ***********************************************************************/
 
 
-movep(mask, size, source, dest, errorPtr)
+void movep(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -324,7 +328,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-moves(mask, size, source, dest, errorPtr)
+void moves(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -364,7 +368,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-moveReg(mask, size, source, dest, errorPtr)
+void moveReg(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -387,7 +391,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-staticBit(mask, size, source, dest, errorPtr)
+void staticBit(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -411,7 +415,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-movec(mask, size, source, dest, errorPtr)
+void movec(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -455,7 +459,7 @@ int controlMode;
  ***********************************************************************/
 
 
-trap(mask, size, source, dest, errorPtr)
+void trap(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -480,7 +484,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-branch(mask, size, source, dest, errorPtr)
+void branch(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -521,7 +525,7 @@ int disp;
  ***********************************************************************/
 
 
-moveq(mask, size, source, dest, errorPtr)
+void moveq(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -545,7 +549,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-immedToCCR(mask, size, source, dest, errorPtr)
+void immedToCCR(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -575,7 +579,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-immedWord(mask, size, source, dest, errorPtr)
+void immedWord(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -604,7 +608,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-dbcc(mask, size, source, dest, errorPtr)
+void dbcc(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -636,7 +640,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-scc(mask, size, source, dest, errorPtr)
+void scc(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -644,7 +648,7 @@ int *errorPtr;
 	if (pass2)
 		output(mask | effAddr(source), WORD);
 	loc += 2;
-	extWords(source);
+	extWords(source, 0, NULL);
 }
 
 
@@ -663,7 +667,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-shiftReg(mask, size, source, dest, errorPtr)
+void shiftReg(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -690,7 +694,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-exg(mask, size, source, dest, errorPtr)
+void exg(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -724,7 +728,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-twoReg(mask, size, source, dest, errorPtr)
+void twoReg(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -746,7 +750,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-oneReg(mask, size, source, dest, errorPtr)
+void oneReg(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -767,7 +771,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-moveUSP(mask, size, source, dest, errorPtr)
+void moveUSP(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;
@@ -789,7 +793,7 @@ int *errorPtr;
  ***********************************************************************/
 
 
-link(mask, size, source, dest, errorPtr)
+void link(mask, size, source, dest, errorPtr)
 int mask, size;
 opDescriptor *source, *dest;
 int *errorPtr;

@@ -730,7 +730,7 @@ void Interface::Run(char* args)
   for(unsigned int steps = 0; ; ++steps)
   {
     string traceRecord;
-    const char* message = myCPU.ExecuteInstruction(traceRecord, false);
+    const char* message = myCPU.ExecuteInstruction(traceRecord, true);
     if(message != 0)
     {
       if(*message == '.')

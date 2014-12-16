@@ -49,6 +49,8 @@
 #include <ctype.h>
 #include "listing.h"
 #include "asm.h"
+#include "error.h"
+
 
 
 extern int loc;			/* The assembler's location counter */
@@ -66,6 +68,8 @@ extern char listFlag;
 extern void strcap(char *, char *);
 
 void assemble(char *, int *);
+
+int pickMask(int, flavor *, int*);
 
 void processFile()
 {
@@ -91,10 +95,10 @@ char pass;
 					errorCount++;
 				else if (error > WARNING)
 					warningCount++;
-				if (listFlag) {
-					listLine(line, lineNum);
-					printError(listFile, error, -1);
-					}
+				// if (listFlag) {
+				// 	listLine(line, lineNum);
+				// 	printError(listFile, error, -1);
+				// 	}
 				printError(stderr, error, lineNum);
 				}
 			lineNum++;
@@ -223,13 +227,16 @@ int size;
 flavor *flavorPtr;
 int *errorPtr;
 {
-	if (!size || size & flavorPtr->sizes)
-		if (size & (BYTE | SHORT))
+	if (!size || size & flavorPtr->sizes) {
+		if (size & (BYTE | SHORT)) {
 			return flavorPtr->bytemask;
-		else if (!size || size == WORD)
-			return flavorPtr->wordmask;
-		else
-			return flavorPtr->longmask;
+		}
+		else { 
+			if (!size || size == WORD)
+				return flavorPtr->wordmask;
+			else
+				return flavorPtr->longmask;}
+	}
 	NEWERROR(*errorPtr, INV_SIZE_CODE);
 	return flavorPtr->wordmask;
 }

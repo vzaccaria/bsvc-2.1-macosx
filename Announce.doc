@@ -94,6 +94,7 @@ The BSVC distribution is known to compile on the following systems:
   * Linux 2.x
   * Solaris
   * Windows 95, 98, and NT
+  * Hopefully, Mac OS X 10.9+
 
 Required Software
 =================

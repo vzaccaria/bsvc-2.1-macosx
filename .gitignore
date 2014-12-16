@@ -1,0 +1,14 @@
+bin
+*.o
+
+src/UI/bsvc
+
+src/UI/bsvc.tk
+
+src/sim68000/sim68000
+
+*.a
+
+example.h68
+
+script

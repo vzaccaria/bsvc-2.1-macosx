@@ -53,7 +53,7 @@ extern char *listPtr;	/* Pointer to buffer where listing line is assembled
  *
  ***********************************************************************/
 
-org(size, label, op, errorPtr)
+void org(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -98,7 +98,7 @@ char *eval();
  *
  ***********************************************************************/
 
-End(size, label, op, errorPtr)
+void End(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -115,7 +115,7 @@ int *errorPtr;
  *
  ***********************************************************************/
 
-equ(size, label, op, errorPtr)
+void equ(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -157,7 +157,7 @@ char *eval();
  *
  ***********************************************************************/
 
-set(size, label, op, errorPtr)
+void set(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -210,7 +210,7 @@ char *eval();
  *
  ***********************************************************************/
 
-dc(size, label, op, errorPtr)
+void dc(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -319,7 +319,7 @@ char *s, *d;
  *
  ***********************************************************************/
 
-dcb(size, label, op, errorPtr)
+void dcb(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -385,7 +385,7 @@ char backRef;
  *
  ***********************************************************************/
 
-ds(size, label, op, errorPtr)
+void ds(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;

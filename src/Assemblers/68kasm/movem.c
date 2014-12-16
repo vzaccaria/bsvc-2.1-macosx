@@ -49,6 +49,8 @@
 #include <ctype.h>
 #include "asm.h"
 
+#include "codegen.h"
+
 
 /* Define bit masks for the legal addressing modes of MOVEM */
 
@@ -62,7 +64,7 @@ extern char pass2;
 char *evalList();
 
 
-movem(size, label, op, errorPtr)
+void movem(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -121,7 +123,7 @@ symbolDef *define();
 					}
 				else
 					loc += 4;
-				extWords(&memOp, errorPtr);
+				extWords(&memOp, 0, errorPtr);
 				return;
 				}
 			else {
@@ -152,7 +154,7 @@ symbolDef *define();
 					}
 				else
 					loc += 4;
-				extWords(&memOp);
+				extWords(&memOp, 0, NULL);
 				return;
 				}
 			}
@@ -167,7 +169,7 @@ symbolDef *define();
 }
 
 
-reg(size, label, op, errorPtr)
+void reg(size, label, op, errorPtr)
 int size;
 char *label, *op;
 int *errorPtr;
@@ -183,7 +185,7 @@ unsigned short regList;
 		return;
 		}
 	op = evalList(op, &regList, errorPtr);
-	if (*errorPtr < SEVERE)
+	if (*errorPtr < SEVERE) {
 		if (!*label) {
 			NEWERROR(*errorPtr, LABEL_REQUIRED);
 			}
@@ -194,6 +196,7 @@ unsigned short regList;
 			if (status < ERROR)
 				symbol->flags |= REG_LIST_SYM;
 			}
+	}
 }
  
 
