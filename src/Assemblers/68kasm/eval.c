@@ -63,6 +63,11 @@ extern int loc;
 
 #define STACKMAX 5
 
+int precedence(int);
+
+
+int doOp(int, int, int, int*);
+
 char *eval(p, valuePtr, refPtr, errorPtr)
 char *p;
 int *valuePtr;
@@ -385,7 +390,7 @@ char op;
 
 int doOp(val1, val2, op, result)
 int val1, val2;
-char op;
+int op;
 int *result;
 {
 
@@ -413,5 +418,6 @@ int *result;
 			   else
 				   return DIV_BY_ZERO;
 		default  : printf("DoOp: Operator error  op = '%c' val1 = %d val2 = %d\n", op, val1, val2);
+					return DIV_BY_ZERO;
 		}
 }

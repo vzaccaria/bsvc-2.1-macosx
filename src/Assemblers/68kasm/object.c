@@ -56,6 +56,8 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 #include "asm.h"
 #include "listing.h"
 
@@ -70,8 +72,10 @@ static char sRecord[80], *objPtr;
 static char byteCount, checksum, lineFlag;
 static int objAddr;
 static char objErrorMsg[] = "Error writing to object file\n";
+void writeObj();
+int checkValue(int);
 
-initObj(name)
+void initObj(name)
 char *name;
 {
 short i;
@@ -88,7 +92,7 @@ short i;
 }
 
 
-outputObj(newAddr, data, size)
+void outputObj(newAddr, data, size)
 int data, size;
 {
 	/* If the new data doesn't follow the previous data, or if the S-record
@@ -142,14 +146,14 @@ int data, size;
 	
 
 
-checkValue(data)
+int checkValue(data)
 int data;
 {
 	return (data + (data >> 8) + (data >> 16) + (data >> 24)) & 0xFF;
 }
 
 
-writeObj()
+void writeObj()
 {
 char recLen[3];
 

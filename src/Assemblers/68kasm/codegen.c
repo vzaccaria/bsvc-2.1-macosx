@@ -104,7 +104,7 @@ opDescriptor *operand;
 }
 
 
-int extWords(op, size, errorPtr)
+void extWords(op, size, errorPtr)
 opDescriptor *op;
 int size, *errorPtr;
 {
