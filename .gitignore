@@ -12,3 +12,7 @@ src/sim68000/sim68000
 example.h68
 
 script
+
+src/Assemblers/68kasm/68kasm
+
+src/sim68000/cpu/instruction
