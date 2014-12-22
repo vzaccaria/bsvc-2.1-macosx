@@ -32,6 +32,9 @@
   #include "M68681.hxx"
 #endif
 
+#include "lib/debug.hxx"
+auto debug = Debug("devices/device-registry");
+
 ///////////////////////////////////////////////////////////////////////////////
 // Array of device information (name, description, tcl script)
 ///////////////////////////////////////////////////////////////////////////////
@@ -77,10 +80,11 @@ bool DeviceRegistry::Create(const string& name, const string& args,
   else
     return false;
 
+  
   // If the device's error message is not empty then return error
   if(device->ErrorMessage() != "")
   {
-    delete device;
+    debug("Message: #{device->ErrorMessage()}");
     return false;
   }
   else

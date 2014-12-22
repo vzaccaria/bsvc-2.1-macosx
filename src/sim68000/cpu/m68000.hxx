@@ -17,6 +17,7 @@
 #define M68000_HXX
 
 #include <string>
+#include "BasicCPU.hxx"
 
 #ifdef WIN32
   #include <iostream>
@@ -30,7 +31,7 @@
 
 class BasicDevice;
 
-#include "BasicCPU.hxx"
+
 
 // Instruction Size Constants
 #define BYTE   0

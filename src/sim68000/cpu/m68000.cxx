@@ -18,6 +18,10 @@
 #include "BasicDevice.hxx"
 #include "RegInfo.hxx"
 #include "AddressSpace.hxx"
+#include "BasicCPU.hxx"
+
+#include "lib/debug.hxx"
+auto debug = Debug("cpu/m68000");
 
 // Array of information about each register
 m68000::RegisterData m68000::ourRegisterData[] = {
@@ -45,10 +49,10 @@ m68000::RegisterData m68000::ourRegisterData[] = {
 ///////////////////////////////////////////////////////////////////////////////
 // The m68000 Class constructor
 ///////////////////////////////////////////////////////////////////////////////
+#define IADDR "{InstructionAddress 8} {Mnemonic 35}"
+
 m68000::m68000()
-    : BasicCPU("68000", 1, *(new vector<AddressSpace*>),
-          "{InstructionAddress 8} {Mnemonic 35}",
-          "InstructionAddress Mnemonic"),     
+    : BasicCPU("68000", 1, *(new vector<AddressSpace*>), IADDR , "InstructionAddress Mnemonic"),
       myNumberOfRegisters(19),
       C_FLAG(0x0001),                           // SR flags    
       V_FLAG(0x0002),
@@ -204,6 +208,7 @@ const char* m68000::ExecuteInstruction(string& traceRecord, bool tracing)
   unsigned int opcode;
   int status;
 
+  debug("State: ##{myState} (Halt is ##{HALT_STATE}) - PC: ##{register_value[PC_INDEX]}");
   // Add instruction address to the trace record
   if(tracing)
   {
@@ -220,6 +225,8 @@ const char* m68000::ExecuteInstruction(string& traceRecord, bool tracing)
     // Service any pending interrupts
     status = ServiceInterrupts(serviceFlag);
 
+    debug("Serviced interrupts ##{status} - ##{serviceFlag}");
+
     // Only execute an instruction if we didn't service an interrupt
     if((!serviceFlag) && (status == EXECUTE_OK))
     { 
@@ -228,6 +235,7 @@ const char* m68000::ExecuteInstruction(string& traceRecord, bool tracing)
       {
         // Fetch the next instruction
         status = Peek(register_value[PC_INDEX], opcode, WORD);
+        debug("Next instruction fetched status ##{status} / EOK is ##{EXECUTE_OK}");
         if(status == EXECUTE_OK)
         {
           register_value[PC_INDEX] += 2;
@@ -236,6 +244,7 @@ const char* m68000::ExecuteInstruction(string& traceRecord, bool tracing)
           ExecutionPointer executeMethod = DecodeInstruction(opcode); 
           status = (this->*executeMethod)(opcode, traceRecord, tracing);
 
+          debug("Next instruction exec status ##{status} / EOK is ##{EXECUTE_OK} - T: ##{register_value[SR_INDEX] & T_FLAG}");
           // If the last instruction was not priviledged then check for trace
           if((status == EXECUTE_OK) && (register_value[SR_INDEX] & T_FLAG))
             status = ProcessException(9);
@@ -278,22 +287,23 @@ const char* m68000::ExecuteInstruction(string& traceRecord, bool tracing)
   // Check the event list
   myEventHandler.Check();
 
+  debug("Current state ##{myState} - Halt state is ##{HALT_STATE}");
   // Signal if the processor is in a wierd state
-  if(myState == HALT_STATE)
+  if (myState == HALT_STATE)
   {
     return "CPU has halted";
   }
-  else if(myState == BREAK_STATE)
-  {
-    myState = NORMAL_STATE;
-    if(tracing)
-      return 0;
-    else
-      return "BREAK instruction";
-  }
-  else
-  {
-    return 0;
+  else {
+      if (myState == BREAK_STATE) {
+          myState = NORMAL_STATE;
+          if (tracing)
+              return "OK";
+          else
+              return "BREAK instruction";
+      }
+      else {
+          return "OK";
+      }
   }
 }
 

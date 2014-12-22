@@ -29,6 +29,10 @@
 #include "BasicCPU.hxx"
 #include "RAM.hxx"
 
+#include "lib/debug.hxx"
+auto debug = Debug("devices/ram");
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Constructor
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,6 +47,7 @@ RAM::RAM(const string& args, BasicCPU& cpu)
   in >> keyword >> equals >> hex >> base;
   if((!in) || (keyword != "BaseAddress") || (equals != "="))
   {
+    debug("No base address received");
     ErrorMessage("Invalid initialization arguments!");
     return;
   }
@@ -51,6 +56,7 @@ RAM::RAM(const string& args, BasicCPU& cpu)
   in >> keyword >> equals >> hex >> size;
   if((!in) || (keyword != "Size") || (equals != "="))
   {
+    debug("No size received");
     ErrorMessage("Invalid initialization arguments!");
     return;
   }

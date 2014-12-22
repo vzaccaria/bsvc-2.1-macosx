@@ -23,6 +23,9 @@
 #include "m68000.hxx"
 #include "Tools.hxx"
 
+#include "lib/debug.hxx"
+auto debug = Debug("cpu/exec");
+
 ///////////////////////////////////////////////////////////////////////////////
 // Compute the effective address, given the mode and register bits
 ///////////////////////////////////////////////////////////////////////////////
@@ -421,7 +424,6 @@ unsigned int m68000::SignExtend(unsigned int value, int size)
 int m68000::Peek(unsigned long address, unsigned int& value, int size)
 {
   unsigned char c1,c2,c3,c4;
-
   switch (size)
   {
     case BYTE:
