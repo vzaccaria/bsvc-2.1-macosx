@@ -40,10 +40,6 @@ int main(int argc, const char** argv)
       instructions = stol(args["--num_inst"].asString());
     }
 
-    for(auto const &v: args) {
-      cout << v.first << " " << v.second << endl;
-    }
-
     try {
       setupSimulation(); 
       auto res = run(program_name, instructions, true);

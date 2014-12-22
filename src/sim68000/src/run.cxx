@@ -1,4 +1,3 @@
-#include "Interface.hxx"
 #include "cpu/m68000.hxx"
 #include "devices/DeviceRegistry.hxx"
 #include "loader/Loader.hxx"
