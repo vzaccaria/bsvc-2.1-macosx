@@ -1,4 +1,7 @@
 bin
+
+.build
+
 *.o
 
 src/UI/bsvc
@@ -16,3 +19,7 @@ script
 src/Assemblers/68kasm/68kasm
 
 src/sim68000/cpu/instruction
+
+src/sim68000/x.cxx
+
+src/sim68000/y.cxx
