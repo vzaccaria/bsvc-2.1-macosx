@@ -1,0 +1,1489 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"f",
+				"f	Anonymous Arrow Function"
+			],
+			[
+				"html",
+				"html	html"
+			],
+			[
+				"in",
+				"in-temporary-directory"
+			],
+			[
+				"se",
+				"setup-temporary-directory"
+			],
+			[
+				"escaped",
+				"escapedFile"
+			],
+			[
+				"apply",
+				"applyToContest"
+			],
+			[
+				"state",
+				"stateProjection"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"wra",
+				"word-spacing"
+			],
+			[
+				"paddin",
+				"padding-left"
+			],
+			[
+				"query",
+				"query-contest"
+			],
+			[
+				"fin-one",
+				"find-one-session-q"
+			],
+			[
+				"find-one-",
+				"find-one-contest-q"
+			],
+			[
+				"create-sess",
+				"create-session-q"
+			],
+			[
+				"create",
+				"create-session"
+			],
+			[
+				"create-",
+				"create-session-q"
+			],
+			[
+				"q-fin",
+				"q-find-one-contest"
+			],
+			[
+				"find",
+				"find-one-session-q"
+			],
+			[
+				"find-",
+				"find-one"
+			],
+			[
+				"find-one",
+				"find-one-session"
+			],
+			[
+				"filena",
+				"filename_provided"
+			],
+			[
+				"filen",
+				"filename_provided"
+			],
+			[
+				"read",
+				"read-only-attributes"
+			],
+			[
+				"must-be-",
+				"must-be-teacher"
+			],
+			[
+				"must",
+				"must-be-teacher"
+			],
+			[
+				"must-",
+				"must-not-change"
+			],
+			[
+				"user",
+				"user_owns"
+			],
+			[
+				"requi",
+				"required-attributes-present"
+			],
+			[
+				"Req",
+				"ReqParam"
+			],
+			[
+				"All",
+				"AllUserSessions"
+			],
+			[
+				"Sess",
+				"SessionWith"
+			],
+			[
+				"User",
+				"UserActor"
+			],
+			[
+				"getEvent",
+				"getEventEffects"
+			],
+			[
+				"getEven",
+				"getEventScope"
+			],
+			[
+				"get",
+				"getEventActor"
+			],
+			[
+				"file",
+				"file-c"
+			],
+			[
+				"empty",
+				"empty-element"
+			],
+			[
+				"circle",
+				"circle-element"
+			],
+			[
+				"test-",
+				"test-diag"
+			],
+			[
+				"test-diag",
+				"test-diag-s"
+			],
+			[
+				"Event",
+				"EventActor"
+			],
+			[
+				"json",
+				"json2csv"
+			],
+			[
+				"joined",
+				"joined-elements"
+			],
+			[
+				"hs",
+				"hs_let	let snippet"
+			],
+			[
+				"getContest",
+				"getContestThunk"
+			],
+			[
+				"bor",
+				"border-box()	 mixins.less"
+			],
+			[
+				"add-",
+				"add-joined-boxes"
+			],
+			[
+				"node",
+				"node-def"
+			],
+			[
+				"get-",
+				"get-1st-array"
+			],
+			[
+				"is-",
+				"is-string"
+			],
+			[
+				"get_",
+				"get_base_name"
+			],
+			[
+				"out",
+				"outputError"
+			],
+			[
+				"ace",
+				"ace-session"
+			],
+			[
+				"dirtyStatu",
+				"dirtyStatusBool"
+			],
+			[
+				"disa",
+				"disable-if-dirty"
+			],
+			[
+				"getSes",
+				"getSessionThunk"
+			],
+			[
+				"q-find",
+				"q-find-visible-contests"
+			],
+			[
+				"check",
+				"check-login-route"
+			],
+			[
+				"chec",
+				"check-route"
+			],
+			[
+				"des",
+				"destroySession"
+			],
+			[
+				"border",
+				"border-box"
+			],
+			[
+				"build-client",
+				"build-client-html"
+			],
+			[
+				"watch",
+				"watch-html"
+			],
+			[
+				"scale",
+				"scaleMatrixByFactor"
+			],
+			[
+				"strem",
+				"stream-join"
+			],
+			[
+				"strea",
+				"stream-join"
+			],
+			[
+				"throu",
+				"through"
+			],
+			[
+				"getConte",
+				"getContestsThunk"
+			],
+			[
+				"profile-pa",
+				"profile-page__column2	 profile.less"
+			],
+			[
+				"clear",
+				"clearUpCache"
+			],
+			[
+				"promise",
+				"promise-error"
+			],
+			[
+				"find-fo",
+				"find-followees-ids"
+			],
+			[
+				"reque",
+				"requesting-user"
+			],
+			[
+				"memo-lo",
+				"memo-long1"
+			],
+			[
+				"this",
+				"this_user"
+			],
+			[
+				"show",
+				"showGCD"
+			],
+			[
+				"Polyno",
+				"Polynomial"
+			],
+			[
+				"Poly",
+				"Polynomial"
+			],
+			[
+				"Type",
+				"TypeOfField1"
+			],
+			[
+				"valida",
+				"validated-user"
+			],
+			[
+				"stude",
+				"student_id_validated"
+			],
+			[
+				"clien",
+				"clientID"
+			],
+			[
+				"strat",
+				"strategy-config"
+			],
+			[
+				"setu",
+				"setup-facebook-auth"
+			],
+			[
+				"setup",
+				"setup-facebook-auth"
+			],
+			[
+				"small",
+				"small-caps()	 mixins.less"
+			],
+			[
+				"image",
+				"image-avatar(@radius: 40px)	 mixins.less"
+			],
+			[
+				"nice",
+				"nice-section-title()	 mixin.less"
+			],
+			[
+				"componen",
+				"component-block"
+			],
+			[
+				"compo",
+				"component-block"
+			],
+			[
+				"box",
+				"box-shadow"
+			],
+			[
+				"lin",
+				"line-height"
+			],
+			[
+				"live",
+				"live-add-reddit-and-twitter	live-add-reddit-and-twitter"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"gulp",
+				"gulps	Gulp simple task"
+			],
+			[
+				"dirty",
+				"dirtyStatusBool"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"toolti",
+				"tooltipVisible"
+			],
+			[
+				"toolt",
+				"tooltipVisible"
+			],
+			[
+				"js_",
+				"js_for_in_array	For in an array"
+			],
+			[
+				"set",
+				"setup-development-environment"
+			],
+			[
+				"div",
+				"div	Tag"
+			],
+			[
+				"spac",
+				"letter-spacing"
+			],
+			[
+				"img",
+				"img-dirs"
+			],
+			[
+				"many",
+				"many-to-many"
+			],
+			[
+				"final",
+				"final-dir"
+			],
+			[
+				"ass",
+				"assets-js"
+			],
+			[
+				"marg",
+				"margin-right	 publications.less"
+			],
+			[
+				"sort-",
+				"sort-by-date"
+			],
+			[
+				"notifies-on",
+				"notifies-on-success"
+			],
+			[
+				"sweetIni",
+				"sweetInitOld"
+			],
+			[
+				"respo",
+				"respond-with-progress"
+			],
+			[
+				"error",
+				"errors-happened"
+			],
+			[
+				"run-",
+				"run-finished"
+			],
+			[
+				"notif",
+				"notifies-on-success"
+			],
+			[
+				"notifi",
+				"notifies-on-fail"
+			],
+			[
+				"deu",
+				"debug-object"
+			],
+			[
+				"debu",
+				"debug-message"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"inle",
+				"inline-block"
+			],
+			[
+				"show-bo",
+				"show-desktop-inline-block()	 mixin.less"
+			],
+			[
+				"side",
+				"sidebar__go_button_size	 sidebar.less"
+			],
+			[
+				"desktop",
+				"desktop-content-offset	 main.less"
+			],
+			[
+				"mobile-side",
+				"mobile-sidebar-width	 main.less"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"command_palette":
+	{
+		"height": 159.0,
+		"selected_items":
+		[
+			[
+				"format",
+				"SublimeAStyleFormmatter: Format Current Selection"
+			],
+			[
+				"clan",
+				"Preferences: SublimeClang Settings – Default"
+			],
+			[
+				"clang",
+				"Preferences: SublimeClang Settings – Default"
+			],
+			[
+				"cla",
+				"Preferences: SublimeClang Settings – User"
+			],
+			[
+				":name",
+				"Snippet: Namespace"
+			],
+			[
+				"namesp",
+				"Snippet: Namespace"
+			],
+			[
+				":using",
+				"Snippet: Using statement (templated)"
+			],
+			[
+				"using",
+				"Snippet: Using statement"
+			],
+			[
+				":install",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"table editor ",
+				"Table Editor: Enable for current view"
+			],
+			[
+				"table editor",
+				"Table Editor: Enable 'detect_header' for current view"
+			],
+			[
+				"tableed",
+				"Table Editor: Enable for current syntax"
+			],
+			[
+				":0",
+				":0 - BOF"
+			],
+			[
+				"Table Edi",
+				"Table Editor: Enable for current syntax"
+			],
+			[
+				":forma",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				":format",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				":wq",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":csssm",
+				"Snippet: css-small-caps"
+			],
+			[
+				":small",
+				"Snippet: css-small-caps"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				":inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"Snippet:",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"jade",
+				"Snippet: html-jade-boilerplate"
+			],
+			[
+				"snippet",
+				"Snippet: html-jade-boilerplate"
+			],
+			[
+				"htmlbp",
+				"Snippet: Simple HTML5 Boilerplate"
+			],
+			[
+				":remove",
+				"Package Control: Remove Package"
+			],
+			[
+				":REMOVE",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remvepa",
+				"Package Control: Remove Package"
+			],
+			[
+				":pack",
+				"Package Control: List Packages"
+			],
+			[
+				"snippet:",
+				"Snippet: Main"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"comb",
+				"Run CSScomb JS"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				":inst",
+				"Package Control: Install Package"
+			],
+			[
+				":make",
+				"SnippetMaker: Make Snippet"
+			],
+			[
+				"make",
+				"SnippetMaker: Make Snippet"
+			],
+			[
+				":packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				":insta",
+				"Package Control: Install Package"
+			],
+			[
+				":eq",
+				"Snippet: Equation"
+			],
+			[
+				"cheat",
+				"Keymaps: Cheat Sheet"
+			],
+			[
+				"ascii dec",
+				"ASCII Decorator: Generate Font Test"
+			],
+			[
+				":instal",
+				"Package Control: Install Package"
+			],
+			[
+				"diff",
+				"FileDiffs: Menu"
+			],
+			[
+				":itemi",
+				"Snippet: Itemize"
+			],
+			[
+				":low",
+				"Convert Case: Lower Case"
+			],
+			[
+				":itemize",
+				"Snippet: Itemize"
+			],
+			[
+				":lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"template",
+				"Snippet: template"
+			],
+			[
+				":item",
+				"Snippet: Itemize"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"annote",
+				"Snippet: annote"
+			],
+			[
+				":annote",
+				"Snippet: annote"
+			],
+			[
+				"note",
+				"Snippet: note"
+			],
+			[
+				"latex",
+				"LaTeXTools: View PDF"
+			],
+			[
+				":install ",
+				"SublimeHaskell: Reinspect all"
+			],
+			[
+				"snipp",
+				"Snippet: bst-cdn-js"
+			],
+			[
+				"snip",
+				"Snippet: html"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"bh",
+				"BracketHighlighter: Toggle High Visibility Mode"
+			],
+			[
+				"md",
+				"Snippet: Markdown_image_(mdi)"
+			],
+			[
+				"haskell",
+				"SublimeHaskell: Run"
+			],
+			[
+				"haskell:",
+				"SublimeHaskell: Run"
+			],
+			[
+				"run",
+				"SublimeHaskell: Run"
+			],
+			[
+				"confi",
+				"SublimeHaskell: Configure"
+			],
+			[
+				"haske",
+				"SublimeHaskell: Check & Lint"
+			],
+			[
+				":show",
+				"SublimeHaskell: Show symbol info"
+			],
+			[
+				"show sy",
+				"SublimeHaskell: Show symbol info"
+			],
+			[
+				":build",
+				"SublimeHaskell: Build"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				":instll",
+				"Package Control: Install Package"
+			],
+			[
+				":vzmdsp",
+				"Snippet: vz.md.space"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"sku",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				":pa",
+				"Package Control: Install Package"
+			],
+			[
+				":key",
+				"Keymaps: Find a keymap for..."
+			],
+			[
+				"vz",
+				"Snippet: vz.lt.array"
+			],
+			[
+				"kbu",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"keyma",
+				"Keymaps: Cheat Sheet"
+			],
+			[
+				":vzbsh",
+				"Snippet: vz.bsh.test.exists"
+			],
+			[
+				":remve",
+				"Package Control: Remove Package"
+			],
+			[
+				":vz",
+				"Snippet: vz.mk.compile"
+			],
+			[
+				"vz.",
+				"Snippet: vz.cb.recipe"
+			],
+			[
+				":vzmd",
+				"Snippet: vz.md.highlight.c"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				":vzh",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vzhm",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vzmt",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vzhigh",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vzexc",
+				"Snippet: vz.wb.excerpt"
+			],
+			[
+				":vzhima",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vzhighma",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":high",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vz high",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vzhi",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":prev",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				":mdspa",
+				"Snippet: vz.md.space"
+			],
+			[
+				":matl",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":exc",
+				"Snippet: vz.wb.excerpt"
+			],
+			[
+				":vzmat",
+				"Snippet: vz.md.math"
+			],
+			[
+				":hima",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":high ma",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":matla",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":json",
+				"Pretty JSON: Reformat (Pretty Print) JSON"
+			],
+			[
+				":inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				":vzma",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":vm",
+				"Snippet: vz.md.highlight.matlab"
+			],
+			[
+				":chs",
+				"Snippet: chs"
+			],
+			[
+				":ex",
+				"Snippet: excerpt"
+			],
+			[
+				":exce",
+				"Snippet: excerpt"
+			],
+			[
+				":pre",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				":gist",
+				"Gist: Open Gist"
+			],
+			[
+				":reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				":rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				":reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				":rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Snip1"
+			],
+			[
+				":new po",
+				"Jekyll: New Post"
+			],
+			[
+				":alignment",
+				"Preferences: Alignment File Settings – Default"
+			],
+			[
+				":align",
+				"Preferences: Alignment File Settings – Default"
+			],
+			[
+				":zen",
+				"Zen Coding: Zen as you type"
+			],
+			[
+				":html",
+				"Set Syntax: HTML"
+			],
+			[
+				":zenc",
+				"Set Syntax: ZenCoding"
+			],
+			[
+				":previ",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				":previe",
+				"Markdown Preview: preview in Browser"
+			]
+		],
+		"width": 588.0
+	},
+	"console":
+	{
+		"height": 312.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/cpu/m68000.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/src/frontend.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/src/run.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/cpu/exec.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/sim68000.sublime-project",
+		"/Users/zaccaria/Library/Application Support/Sublime Text 2/Packages/SublimeClang/SublimeClang.sublime-settings",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/lib/docopt/docopt_value.h",
+		"/Users/zaccaria/Library/Application Support/Sublime Text 2/Packages/User/SublimeClang.sublime-settings",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/main.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/makefile.ls",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/src/run.hxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/devices/RAM.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/devices/DeviceRegistry.cxx",
+		"/Users/zaccaria/development/github/documents/books/infob-book/presentation-material/show-it/slides.md",
+		"/Users/zaccaria/development/github/ascidia-cli/main.py",
+		"/Users/zaccaria/development/github/website/posts/2014-12-19-sistemi-operativi.md",
+		"/Users/zaccaria/development/github/derp/makefile",
+		"/Users/zaccaria/development/github/derp/test/example.cxx",
+		"/Users/zaccaria/development/github/derp/index.ls",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2014-2015 Informatica B/Materiale corso/141219_lezione/materiale.md",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Ricerca/141217_idee_per_micron/idee_per_micron.md",
+		"/Users/zaccaria/development/github/debug.hxx/Readme.md",
+		"/Users/zaccaria/development/github/debug.hxx/debug.hxx",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2012-2013 Informatica B/Esami/130128 Prova in itinere del 28 Gennaio/1301_prova_in_itinere_2_con_soluzioni.md",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2012-2013 Informatica B/Esami/130128 Prova in itinere del 28 Gennaio/Publish/1301_prova_in_itinere_2_con_soluzioni.md",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2012-2013 Informatica B/Esami/130128 Prova in itinere del 28 Gennaio/1301_prova_in_itinere_1_con_soluzioni.md",
+		"/Users/zaccaria/development/github/documents/books/infob-book/presentation-material/show-it/themes/source/zac.scss",
+		"/Users/zaccaria/development/github/documents/books/infob-book/presentation-material/show-it/themes/template/theme.scss",
+		"/Users/zaccaria/development/github/debug.hxx/makefile.ls",
+		"/Users/zaccaria/development/github/debug.hxx/test2.cpp",
+		"/Users/zaccaria/development/github/debug.hxx/test1.cpp",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2014-2015 Informatica B/Prove/Valutazione/elencoStudentiTBI.csv",
+		"/Users/zaccaria/development/github/website/posts/2014-12-17-voti-prima-prova.md",
+		"/Users/zaccaria/development/github/website/assets/teaching.jade",
+		"/Users/zaccaria/development/github/website/assets/less/teaching.less",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2014-2015 Informatica B/Prove/Valutazione/elencoStudentiPubblicati.csv",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2014-2015 Informatica B/Prove/Valutazione/elencoStudenti.csv",
+		"/Users/zaccaria/Library/Application Support/Sublime Text 2/Packages/Table Editor/Default (OSX).sublime-keymap",
+		"/Users/zaccaria/Library/Application Support/Sublime Text 2/Packages/Table Editor/README.md",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/makefile.frontend",
+		"/Users/zaccaria/development/github/website/makefile.ls",
+		"/Users/zaccaria/tmp/x.dot",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2014-2015 Informatica B/Materiale corso/141202_lezioni/materiale.md",
+		"/Users/zaccaria/development/svn/curriculum/website_zaccaria_3.0/ngsite/_posts/2012-12-12-esercizio-su-scontrini-del-supermercato.md",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/sim68000/frontend.cxx",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/object.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/object.h",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/directive.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/symbol.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/eval.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/codegen.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/error.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/build.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/assemble.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/Makefile",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/build.c",
+		"/Users/zaccaria/development/github/exemd-dot/index.ls",
+		"/Users/zaccaria/development/github/exemd/package.json",
+		"/Users/zaccaria/development/github/exemd/index.ls",
+		"/Users/zaccaria/tmp/x.md",
+		"/Users/zaccaria/development/github/website/assets/layouts/base.jade",
+		"/Users/zaccaria/development/github/json2html-cli/index.ls",
+		"/Users/zaccaria/development/github/bsvc-2.1/Readme.md",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/movem.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/codegen.h",
+		"/Users/zaccaria/development/github/bsvc-2.1/Announce.doc",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/main.c",
+		"/Users/zaccaria/development/github/bsvc-2.1/src/Assemblers/68kasm/include.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/listing.h",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/assemble.h",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/main.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/assemble.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/object.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/object.h",
+		"/usr/include/secure/_string.h",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/instlookup.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/listing.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/codegen.c",
+		"/Users/zaccaria/Downloads/bsvc-2.1/src/Assemblers/68kasm/symbol.c",
+		"/Users/zaccaria/development/github/exemd/makefile",
+		"/Users/zaccaria/development/github/exemd/command.ls",
+		"/Users/zaccaria/development/github/website/posts/2014-10-13-organizzazione-laboratori.md",
+		"/Users/zaccaria/development/svn/68kemu/src/lineb.c",
+		"/Users/zaccaria/development/github/Ascidia/file.txt",
+		"/Users/zaccaria/development/github/xblocks-for-edx/help.md",
+		"/Users/zaccaria/development/github/xblock-octave/help.md",
+		"/Users/zaccaria/development/fullstack/Vagrantfile",
+		"/Users/zaccaria/development/github/website/posts/2014-12-12-funzioni-ricorsive.md",
+		"/Users/zaccaria/development/github/mermaid/mermaid-cli/test/x.svg",
+		"/Users/zaccaria/Downloads/octave-fractals-master/fractaldemo.m",
+		"/Users/zaccaria/Dropbox/Commuting/Ricercatore TI 2011/Lezioni/2012-2013 Informatica B/Esami/130211 Appello del 11 Febbraio/1302_appello_con_soluzioni.md",
+		"/Users/zaccaria/development/github/mermaid/mermaid-cli/index.ls",
+		"/Users/zaccaria/development/github/mermaid/mermaid-cli/node_modules/nightmare/Readme.md",
+		"/Users/zaccaria/development/github/gitbook2edx/readme.md",
+		"/Users/zaccaria/development/github/xblock-octave/xblock-octave/setup.py",
+		"/Users/zaccaria/development/github/xblock-octave/xblock-octave/xblock-octave/xblock-octave.py",
+		"/Users/zaccaria/development/github/gitbook2edx/scripts/test.sh",
+		"/Users/zaccaria/development/github/gitbook2edx/src/gitbook.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/test/javascript-master/config.yaml",
+		"/Users/zaccaria/development/github/gitbook2edx/template/course.xml",
+		"/Users/zaccaria/development/github/gitbook2edx/docs/usage.md",
+		"/Users/zaccaria/development/github/gitbook2edx/docs/readme.md",
+		"/Users/zaccaria/development/github/gitbook2edx/src/index.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/src/build.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/src/condense.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/src/write.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/template/short_description.html",
+		"/Users/zaccaria/development/github/gitbook2edx/template/overview.html",
+		"/Users/zaccaria/development/github/documents/papers/20141124_concur_and_comp/biblio.bib",
+		"/Users/zaccaria/development/github/documents/papers/20141124_concur_and_comp/paper.md",
+		"/Users/zaccaria/development/github/website/posts/2014-12-09-esercizi-su-funzioni-matlab.md",
+		"/Users/zaccaria/development/github/exemd/test2.md",
+		"/Users/zaccaria/development/github/gitbook2edx/test/javascript-master/cover.jpg",
+		"/Users/zaccaria/development/github/edx-assets/node_modules/highlight.js/lib/index.js",
+		"/Users/zaccaria/development/github/edx-assets/assets/css/solarized_light.css",
+		"/Users/zaccaria/development/github/edx-assets/makefile.ls",
+		"/Users/zaccaria/development/github/edx-assets/assets/js/client.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/book-assets/external-require.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/book-assets/entry.ls",
+		"/Users/zaccaria/development/github/website/posts/2014-12-05-introduzione-alle-funzioni-in-matlab.md",
+		"/Users/zaccaria/development/github/gitbook2edx/makefile.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/condense.ls",
+		"/Users/zaccaria/development/github/gitbook2edx/reference/phys101-master/policies/2013_Winter/policy.json",
+		"/Users/zaccaria/development/github/gitbook2edx/template/policy.json",
+		"/Users/zaccaria/development/github/gitbook-example/book.json",
+		"/Users/zaccaria/development/github/website/assets/data/projects.json",
+		"/Users/zaccaria/Desktop/lezione_141202/quarto.m",
+		"/Users/zaccaria/development/github/website/posts/2014-12-02-introduzione-a-matlab.md"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"*.ls, *.less, *.md,*.jade",
+			"*.ls, *.less, *.md",
+			"*.ls, *.less",
+			"/Users/zaccaria/development/svn/devel/zaccaria/new-infoweb/infoweb/sails-src/**/*.ls",
+			"/Users/zaccaria/development/svn/devel/zaccaria/new-infoweb/infoweb/sails-src/*.ls",
+			"/Users/zaccaria/development/svn/devel/zaccaria/new-infoweb/infoweb/sails-src/*ls",
+			"/Users/zaccaria/development/svn/devel/zaccaria/infoweb/assets",
+			"",
+			"/Users/zaccaria/development/github/website/assets",
+			"*.md",
+			"",
+			"*.less",
+			"*.ls",
+			"*.less",
+			"*.js",
+			"*.less",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"array",
+			"return",
+			"Executeins",
+			"traceRecord",
+			"exec",
+			"clang",
+			"std",
+			"debug",
+			"Peek",
+			"HALT_STATE",
+			"debug",
+			"FONT_SIZE",
+			"size",
+			"font",
+			"---",
+			"decorator",
+			"interpolate",
+			"string",
+			"interp",
+			"ound",
+			"rep",
+			"interp",
+			"``matlab`",
+			"\\\\)",
+			"\\\\(",
+			"pascal",
+			"\\]",
+			"\\[",
+			"pre",
+			"includes",
+			"^",
+			";",
+			"|",
+			"oreti alessio",
+			"gaia",
+			"latella",
+			"fumagalli",
+			"mancini",
+			"longoni",
+			"Manfredi",
+			"ilderico",
+			"longa",
+			"^",
+			";",
+			"doOp",
+			"precedence",
+			"hash",
+			"HASH",
+			"hash",
+			"HASH",
+			"hash",
+			"output",
+			"hash",
+			"listLoc",
+			"checkValue",
+			"checkvalue",
+			"checkValue",
+			"writeObj",
+			"pickMask",
+			"printError",
+			"listLine",
+			"extWor",
+			"quickMath",
+			"moveq",
+			"target-mode",
+			"rej",
+			"types",
+			"(type)",
+			"protect",
+			"INV_ADDR_MODE",
+			"size",
+			"extWords",
+			"errorPtr",
+			"output",
+			"b",
+			"a",
+			"SUB",
+			"getop",
+			"getoptio",
+			"params",
+			"code-block-res",
+			"ode-block-res",
+			"null, ",
+			"code-regex",
+			"single-line",
+			"code",
+			"string",
+			"replace-handler-gen",
+			"replace-code",
+			"my-async-replace",
+			"finishObj",
+			"finishO",
+			"initList",
+			"exit()",
+			"help",
+			"setFlags",
+			"listLine",
+			"exit()",
+			"listobj",
+			"exit()",
+			"code-regex",
+			"replace-code",
+			"target-mode",
+			"cat",
+			"index",
+			"par",
+			"tmpdir",
+			"F",
+			"f",
+			"xblock-octave",
+			"saveimage",
+			"opacity: 0",
+			"png",
+			"render",
+			"error",
+			"out",
+			"start",
+			"dstdir",
+			"overview",
+			"gitbook",
+			"Gitbook",
+			"directory",
+			"pautass",
+			"in respo",
+			"font-f",
+			"console.log",
+			"subsection",
+			"black"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"|",
+			",",
+			"|",
+			"| ",
+			"ProduzioneMensile",
+			"sails.models.user",
+			"MatrixPolynomial",
+			"large grain data flow",
+			"### ",
+			"###",
+			"#### ",
+			"### "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				2,
+				0,
+				3,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.931128323215,
+			0.97034400949,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
+	"output.clang":
+	{
+		"height": 252.0
+	},
+	"output.exec":
+	{
+		"height": 355.0
+	},
+	"output.haskell_error_checker":
+	{
+		"height": 452.0
+	},
+	"output.haskell_sublime_load":
+	{
+		"height": 132.0
+	},
+	"replace":
+	{
+		"height": 78.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/zaccaria/projects/trunk/curriculum/mqlambda/server/mqls/prova.md"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 183.0,
+	"status_bar_visible": true
+}
