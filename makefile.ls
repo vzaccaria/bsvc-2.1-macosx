@@ -30,7 +30,7 @@ parse ->
                     @derp -> [
                          @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'
                          @clang-pre 'sim68k-src/lib/json11/json11.cpp'
-                         @clang-pre 'sim68k-src/cpu/*.cxx'
+                         @clang-pre 'sim68k-src/cpu/*.cxx', 'sim68k-src/cpu/*.hxx'
                          @clang-pre 'sim68k-src/devices/*.cxx'
                          @clang-pre 'sim68k-src/loader/*.cxx'
                          @clang-pre 'sim68k-src/src/*.cxx'
