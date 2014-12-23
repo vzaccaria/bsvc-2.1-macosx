@@ -2,6 +2,7 @@
 #include "src/run.hxx"
 #include "lib/debug.hxx"
 #include <iostream>
+#include "src/print.hxx"
 
 static const char USAGE[] =
 R"(frontend.
@@ -43,9 +44,7 @@ int main(int argc, const char** argv)
     try {
       setupSimulation(); 
       auto res = run(program_name, instructions, true);
-      for(auto v: res.array_items()) {
-        cout << v.dump() << endl;
-      }
+      printTrace(res);
     }
     catch(char const *e) {
       cout << "Exception: " << e << '\n';

@@ -119,8 +119,10 @@ Json run(string program, long instructions, bool json) {
 	do {
 		auto val = execInstruction();
 		auto regs = getRegisters();
-		inst.push_back(val);
-		inst.push_back(diff(prev, regs));
+		inst.push_back(Json::object {
+			{ "instruction", val }, 
+			{ "delta", diff(prev, regs) }
+		});
 		prev = regs;
 		n = n + 1;
 
