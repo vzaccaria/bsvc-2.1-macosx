@@ -24,27 +24,7 @@
 auto debug = Debug("cpu/m68000");
 
 // Array of information about each register
-m68000::RegisterData m68000::ourRegisterData[] = {
-  {"D0",  0xffffffff,  "Data Register 0"},
-  {"D1",  0xffffffff,  "Data Register 1"},
-  {"D2",  0xffffffff,  "Data Register 2"},
-  {"D3",  0xffffffff,  "Data Register 3"},
-  {"D4",  0xffffffff,  "Data Register 4"},
-  {"D5",  0xffffffff,  "Data Register 5"},
-  {"D6",  0xffffffff,  "Data Register 6"},
-  {"D7",  0xffffffff,  "Data Register 7"},
-  {"A0",  0xffffffff,  "Address Register 0"},
-  {"A1",  0xffffffff,  "Address Register 1"},
-  {"A2",  0xffffffff,  "Address Register 2"},
-  {"A3",  0xffffffff,  "Address Register 3"},
-  {"A4",  0xffffffff,  "Address Register 4"},
-  {"A5",  0xffffffff,  "Address Register 5"},
-  {"A6",  0xffffffff,  "Address Register 6"},
-  {"A7",  0xffffffff,  "Address Register 7 (User Stack Pointer)"},
-  {"A7'" ,0xffffffff,  "Address Register 7 (Supervisor Stack Pointer)"},
-  {"PC",  0xffffffff,  "Program Counter"},
-  {"SR",  0x0000ffff,  "Status Register: T-S--III---XNZVC\n  T: Trace Mode\n  S: Supervisory Mode\n  I: Interrupt Mask Level\n  X: Extend\n  N: Negative\n  Z: Zero\n  V: Overflow\n  C: Carry"}
-}; 
+// m68000::RegisterData m68000::ourRegisterData[] 
 
 ///////////////////////////////////////////////////////////////////////////////
 // The m68000 Class constructor

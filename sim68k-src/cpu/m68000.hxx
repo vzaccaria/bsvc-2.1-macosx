@@ -79,7 +79,12 @@ class m68000 : public BasicCPU {
     // Append all of the CPU's stats to the StatisticalInformationList object
     void BuildStatisticalInformationList(StatisticalInformationList& list);
 
-  private:
+    // Number of registers in the cpu
+    int myNumberOfRegisters;
+
+    // Pointer to an array of values for each register
+    unsigned long* register_value;
+
     // Used for register information table
     struct RegisterData {
       char* name;
@@ -87,15 +92,33 @@ class m68000 : public BasicCPU {
       char* description;
     };
 
-  private:
-    // Number of registers in the cpu
-    const int myNumberOfRegisters;
-
     // Array of static information for each register 
-    static RegisterData ourRegisterData[];
+    RegisterData ourRegisterData[19] = {
+  {"D0",  0xffffffff,  "Data Register 0"},
+  {"D1",  0xffffffff,  "Data Register 1"},
+  {"D2",  0xffffffff,  "Data Register 2"},
+  {"D3",  0xffffffff,  "Data Register 3"},
+  {"D4",  0xffffffff,  "Data Register 4"},
+  {"D5",  0xffffffff,  "Data Register 5"},
+  {"D6",  0xffffffff,  "Data Register 6"},
+  {"D7",  0xffffffff,  "Data Register 7"},
+  {"A0",  0xffffffff,  "Address Register 0"},
+  {"A1",  0xffffffff,  "Address Register 1"},
+  {"A2",  0xffffffff,  "Address Register 2"},
+  {"A3",  0xffffffff,  "Address Register 3"},
+  {"A4",  0xffffffff,  "Address Register 4"},
+  {"A5",  0xffffffff,  "Address Register 5"},
+  {"A6",  0xffffffff,  "Address Register 6"},
+  {"A7",  0xffffffff,  "Address Register 7 (User Stack Pointer)"},
+  {"A7'" ,0xffffffff,  "Address Register 7 (Supervisor Stack Pointer)"},
+  {"PC",  0xffffffff,  "Program Counter"},
+  {"SR",  0x0000ffff,  "Status Register: T-S--III---XNZVC\n  T: Trace Mode\n  S: Supervisory Mode\n  I: Interrupt Mask Level\n  X: Extend\n  N: Negative\n  Z: Zero\n  V: Overflow\n  C: Carry"}
+}; 
 
-    // Pointer to an array of values for each register
-    unsigned long* register_value;
+
+
+  private:
+
 
     // Status Register masks
     const unsigned long C_FLAG;         // Carry
