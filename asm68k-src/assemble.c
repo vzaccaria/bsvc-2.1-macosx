@@ -52,13 +52,12 @@
 #include "error.h"
 
 
-
+int errorCount, warningCount;
 extern int loc;			/* The assembler's location counter */
 extern char pass2;		/* Flag set during second pass */
 extern char endFlag;		/* Flag set when the END directive is encountered */
 extern char continuation;	/* TRUE if the listing line is a continuation */
 extern int lineNum;
-extern int errorCount, warningCount;
 
 extern char line[256];		/* Source line */
 extern FILE *inFile;		/* Input file */
@@ -70,6 +69,34 @@ extern void strcap(char *, char *);
 void assemble(char *, int *);
 
 int pickMask(int, flavor *, int*);
+
+char *skipSpace(p)
+char *p;
+{
+	while (isspace(*p))
+		p++;
+	return p;
+}
+
+void strcap(d, s)
+char *d, *s;
+{
+char capFlag;
+
+	capFlag = TRUE;
+	while (*s) {
+		if (capFlag)
+			*d = toupper(*s);
+		else
+			*d = *s;
+		if (*s == '\'')
+			capFlag = !capFlag;
+		d++;
+		s++;
+		}
+	*d = '\0';
+}
+
 
 void processFile()
 {
@@ -95,10 +122,10 @@ char pass;
 					errorCount++;
 				else if (error > WARNING)
 					warningCount++;
-				// if (listFlag) {
-				// 	listLine(line, lineNum);
-				// 	printError(listFile, error, -1);
-				// 	}
+				if (listFlag) {
+					listLine();
+					printError(listFile, error, -1);
+					}
 				printError(stderr, error, lineNum);
 				}
 			lineNum++;

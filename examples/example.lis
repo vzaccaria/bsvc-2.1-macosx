@@ -16,6 +16,3 @@
 00002018                                    16  SUM	DS.W	1		Reserve one word for SUM
 0000201A  0019                              17  COUNT	DC.W	25		Initial value for COUNT
 0000201C                                    18  
-
-No errors detected
-No warnings generated
