@@ -43,6 +43,8 @@ class BasicDevice;
 #define SUBTRACTION 1
 #define OTHER       2
 
+#pragma clang diagnostic ignored "-Wdeprecated-writable-strings"
+
 class m68000 : public BasicCPU {
   public:
     // Constructor

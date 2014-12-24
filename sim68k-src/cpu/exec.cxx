@@ -1446,7 +1446,7 @@ int m68000::ExecuteANDItoSR(int, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
@@ -2385,7 +2385,7 @@ int m68000::ExecuteDIVS(int opcode, string& trace_record, int trace)
   {
     if((status=ProcessException(5)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Divide by Zero Exception}} ";
     return(EXECUTE_OK);
   }
@@ -2457,7 +2457,7 @@ int m68000::ExecuteDIVU(int opcode, string& trace_record, int trace)
   {
     if((status=ProcessException(5)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Divide by Zero Exception}} ";
     return(EXECUTE_OK);
   }
@@ -2655,7 +2655,7 @@ int m68000::ExecuteEORItoSR(int, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
@@ -3655,7 +3655,7 @@ int m68000::ExecuteMOVEUSP(int opcode, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
@@ -3743,7 +3743,7 @@ int m68000::ExecuteMOVEtoSR(int opcode, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
@@ -4231,7 +4231,7 @@ int m68000::ExecuteORItoSR(int, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
@@ -4305,7 +4305,7 @@ int m68000::ExecuteRESET(int, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
@@ -4803,7 +4803,7 @@ int m68000::ExecuteRTE(int, string& trace_record, int trace)
     SetRegister(PC_INDEX, register_value[PC_INDEX]-2, LONG);
     if((status=ProcessException(8)) != EXECUTE_OK)
       return(status);
-    if(trace);
+    if(trace)
       trace_record+="{Mnemonic {Privilege Violation Exception}} ";
     return(EXECUTE_PRIVILEGED_OK);
   }
