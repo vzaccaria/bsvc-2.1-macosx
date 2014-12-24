@@ -26,30 +26,16 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include "asm.h"
+#include "../asm.h"
 #include <string.h>
 #include <stdlib.h>
 
-#include "listing.h"
-#include "object.h"
-#include "assemble.h"
+#include "../listing.h"
+#include "../object.h"
+#include "../assemble.h"
 
 
-char* buildCompleteSourceFile(FILE* currentFile, char* currentFileName,
-    FILE* completeFile, int level);
 
-extern FILE *inFile;	/* Input file */
-extern FILE *listFile;	/* Listing file */
-extern FILE *objFile;	/* Object file */
-extern char line[256];	/* Source line */
-int errorCount, warningCount;	/* Number of errors and warnings */
-
-
-extern char listFlag;		/* True if a listing is desired */
-extern char objFlag;		/* True if an object code file is desired */
-extern char xrefFlag;		/* True if a cross-reference is desired */
-extern char cexFlag;		/* True is Constants are to be EXpanded */
-extern char absLongFlag;	/* True if all long absolute addresses */
 
 void setFlags(int, char**, int*);
 void help();
@@ -184,34 +170,6 @@ char *error;
 		fprintf(stderr, "No warnings generated\n");
 }
 
-
-void strcap(d, s)
-char *d, *s;
-{
-char capFlag;
-
-	capFlag = TRUE;
-	while (*s) {
-		if (capFlag)
-			*d = toupper(*s);
-		else
-			*d = *s;
-		if (*s == '\'')
-			capFlag = !capFlag;
-		d++;
-		s++;
-		}
-	*d = '\0';
-}
-
-
-char *skipSpace(p)
-char *p;
-{
-	while (isspace(*p))
-		p++;
-	return p;
-}
 
 
 void setFlags(argc, argv, argi)
