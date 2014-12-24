@@ -5,12 +5,12 @@
 #include "src/print.hxx"
 
 static const char USAGE[] =
-R"(frontend.
+R"(sim68k.
 
     Usage:
-      frontend run <program> [ -j | --json ] [ -n N | --num_inst N ]
-      frontend (-h | --help)
-      frontend (-v | --version)
+      sim68k <program> [ -j | --json ] [ -n N | --num_inst N ]
+      sim68k (-h | --help)
+      sim68k(-v | --version)
 
     Options:
       -j --json             Output in json format
@@ -24,21 +24,19 @@ using namespace std;
 
 int main(int argc, const char** argv)
 {
-    auto i = "Prova";
-    auto command = "Check this number #{i} out \n";
-
-
     std::map<std::string, docopt::value> args
         = docopt::docopt(USAGE,
                          { argv + 1, argv + argc },
                          true,             // show help if requested
-                         "Frontend 0.0");  // version string
+                         "Sim68K 0.0");  // version string
 
     auto program_name = args["<program>"].asString();
     auto instructions = (long) -1;
 
-    if(args.count("--num_inst")) {
+    if(args.count("--num_inst") && args["--num_inst"].isString()) {
       instructions = stol(args["--num_inst"].asString());
+    } else {
+      instructions = 10;
     }
 
     try {
