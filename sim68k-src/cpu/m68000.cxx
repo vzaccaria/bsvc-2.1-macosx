@@ -272,7 +272,7 @@ const char* m68000::ExecuteInstruction(string& traceRecord, bool tracing)
       if (myState == BREAK_STATE) {
           myState = NORMAL_STATE;
           if (tracing)
-              return "OK";
+              return "BREAK instruction";
           else
               return "BREAK instruction";
       }
