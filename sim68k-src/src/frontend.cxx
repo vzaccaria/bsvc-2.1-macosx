@@ -8,15 +8,16 @@ static const char USAGE[] =
 R"(sim68k.
 
     Usage:
-      sim68k <program> [ -j | --json ] [ -n N | --num_inst N ]
+      sim68k <program> [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR]
       sim68k (-h | --help)
       sim68k(-v | --version)
 
     Options:
-      -j --json             Output in json format
-      -n N, --num_inst N    Number of instructions to execute 
-      -h --help             Show this screen.
-      -v --version          Program version
+      -j --json               Output in json format
+      -n N, --num_inst N      Number of instructions to execute 
+      -s ADDR, --start ADDR   Specify hex start address (default is 2000)
+      -h --help               Show this screen.
+      -v --version            Program version
 
 )";
 
@@ -32,6 +33,7 @@ int main(int argc, const char** argv)
 
     auto program_name = args["<program>"].asString();
     auto instructions = (long) -1;
+    auto start = string("2000");
 
     if(args.count("--num_inst") && args["--num_inst"].isString()) {
       instructions = stol(args["--num_inst"].asString());
@@ -39,9 +41,13 @@ int main(int argc, const char** argv)
       instructions = 10;
     }
 
+    if(args.count("--start") && args["--start"].isString()) {
+      start = args["--start"].asString();
+    }
+
     try {
       setupSimulation(); 
-      auto res = run(program_name, instructions, true);
+      auto res = run(program_name, instructions, true, start);
       printTrace(res);
     }
     catch(char const *e) {
