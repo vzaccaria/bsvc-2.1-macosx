@@ -19,9 +19,9 @@ void printMnemonic(string s) {
 
 void printDelta(string name, int v1, int v2) {
 	cout << setfill(' ') << right << setw(4) << name << ':';
-	printHex(v1,4);
+	printHex(v1,2);
 	cout << " -> ";
-	printHex(v2,4);
+	printHex(v2,2);
 
 }
 

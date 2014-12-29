@@ -119,7 +119,6 @@ class m68000 : public BasicCPU {
 
 
 
-  private:
 
 
     // Status Register masks
@@ -133,6 +132,8 @@ class m68000 : public BasicCPU {
     const unsigned long I2_FLAG;        // Interrupt Mask Level
     const unsigned long S_FLAG;         // Supervisory
     const unsigned long T_FLAG;         // Trace Mode
+
+  private:
 
     // Indices into the register arrays (Note: D0-D7-A0-A7' must be sequential)
     const unsigned int D0_INDEX;

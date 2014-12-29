@@ -6,6 +6,7 @@
 #include <numeric>
 #include <map>
 #include "lib/debug.hxx"
+#include "lib/underscore.hxx"
 
 auto debug = Debug("run");
 
@@ -30,37 +31,33 @@ void setupSimulation() {
 	processor->addressSpace(0).AttachDevice(ram);
 }
 
-/* Warning, this assumes there are no two values with the same key */
-Json indexBy(Json j1, string key) {
-	Json::object ret; 
-	for(const auto v: j1.array_items()) {
-		auto kk = v[key].string_value();
-		ret[kk] = v;
-	}
-	return ret;
-}
+
 
 Json diff(Json j1, Json j2) {
 	vector<Json> rdiff;
-	auto ji1 = indexBy(j1.array_items(), "name");
-	auto ji2 = indexBy(j2.array_items(), "name");
+	auto ji1 = _::indexBy(j1, "name");
+	auto ji2 = _::indexBy(j2, "name");
 
-	for(const auto v: j1.array_items()) {
+	return _::map(j1, [=](Json v) -> Json {
 
 		auto element = v["name"].string_value();
 
 		if(ji1[element] != ji2[element]) {
-			rdiff.push_back(Json::object {
+			return (Json::object {
 				{ "register", Json::object {
 					{ "name"   , element }      ,
 					{ "before" , ji1[element]["value"] } ,
 					{ "after"  , ji2[element]["value"] }}
 				}
 			});
+		} else {
+			return Json();
 		}
-	}
-	return rdiff;
+
+	});
 }
+
+#define FLAG(V, FNAME) ((int) (V & processor->FNAME) ? 1 : 0)
 
 Json getRegisters() {
 	vector<Json> regs;
@@ -71,17 +68,34 @@ Json getRegisters() {
 		auto value = processor->register_value[t] & data.mask;
 		auto desc  = data.description;
 
-		regs.push_back(Json::object {
-			{ "name", pname },
-			{ "value", (int) value }
-		});
+		if(pname != string("SR")) {
+			regs.push_back(Json::object {
+				{ "name", pname },
+				{ "value", (int) value }
+			});
+		} else {
+			regs.push_back(Json::object {
+				{ "name", "C"}, { "value", FLAG(value, C_FLAG) }
+			});
+			regs.push_back(Json::object {
+				{ "name", "Z"}, { "value", FLAG(value, Z_FLAG) }
+			});			
+			regs.push_back(Json::object {
+				{ "name", "N"}, { "value", FLAG(value, N_FLAG) }
+			});		
+			regs.push_back(Json::object {
+				{ "name", "V"}, { "value", FLAG(value, V_FLAG) }
+			});		
+			regs.push_back(Json::object {
+				{ "name", "X"}, { "value", FLAG(value, X_FLAG) }
+			});		
+		}
 	}
 	return regs;
 }
 
 string extractMnemonic(string traceMessage) {
 	smatch sm;
-	debug("Current trace #{traceMessage}");
 	regex re("Mnemonic \\{([^\\}]*)\\}", std::regex_constants::ECMAScript | std::regex_constants::icase);
 	auto res = regex_search(traceMessage, sm, re);
 	if(sm.size() > 1)
@@ -102,7 +116,7 @@ Json execInstruction() {
 	};
 }
 
-Json run(string program, long instructions, bool json) {
+Json run(string program, long instructions, bool json, string start_address) {
 	vector<Json> inst;
 	int n = 0;
 
@@ -113,7 +127,8 @@ Json run(string program, long instructions, bool json) {
 	}
 
 	processor->Reset();
-	processor->SetRegister("PC", "2000");
+	processor->SetRegister("PC", start_address);
+
 	auto prev = getRegisters();
 	bool continuate = true;
 	do {
