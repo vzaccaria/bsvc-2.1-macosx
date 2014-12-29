@@ -4949,6 +4949,7 @@ int m68000::ExecuteBREAK(int, string& trace_record, int trace)
 
   // Put the processor in our "fake" break state so the simulator will
   // stop running a program.
+  debugm("Break executed");
   myState = BREAK_STATE;
 
   if(trace)
