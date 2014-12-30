@@ -12,3 +12,7 @@ src/sim68000/cpu/instruction
 src/sim68000/x.cxx
 src/sim68000/y.cxx
 test/base/test0/test.txt
+test/base/test0/test.h68
+test/base/test1/test.h68
+test/base/test1/test.lis
+test/base/test1/test.txt
