@@ -59,7 +59,7 @@ run() {
 }
 
 
-for f in ./base/*
+for f in $srcdir/base/*
 do
   # is it a directory?
   if [ -d "$f" ]; then
