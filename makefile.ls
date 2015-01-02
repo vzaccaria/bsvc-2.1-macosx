@@ -31,10 +31,10 @@ parse ->
 
         @dest "./bin/asm68k", -> 
             @link -> [
-                @gcc 'asm68k-src/*.c'            
-                @clang-pre 'asm68k-src/*.cxx'
-                @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'
-                @clang-pre 'sim68k-src/lib/json11/json11.cpp'
+                @gcc 'asm68k-src/*.c'                           , '**/*.h*'
+                @clang-pre 'asm68k-src/*.cxx'                   , '**/*.h*'
+                @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'   , '**/*.h*'
+                @clang-pre 'sim68k-src/lib/json11/json11.cpp'   , '**/*.h*'
                 ]
 
         @dest "./bin/oldasm68k", -> 
