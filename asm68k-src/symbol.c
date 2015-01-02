@@ -99,8 +99,10 @@ int create, *errorPtr;
         /* If a match was found, return pointer to the structure */
         if (s && !cmp)
         {
-            if (create)
+            if (create) {
+                printf("Symbol `%s` already defined\n", sym);
                 NEWERROR(*errorPtr, MULTIPLE_DEFS);
+            }
             t = s;
         }
         /* Otherwise insert the symbol in the list */

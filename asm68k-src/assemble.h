@@ -19,3 +19,5 @@ extern char absLongFlag;	/* True if all long absolute addresses */
 
 extern void initList(char *);
 extern void initObj(char *);
+extern void nInitProcessText();
+extern void nProcessLine(const char *line, int pass2);

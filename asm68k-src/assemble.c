@@ -50,7 +50,7 @@
 #include "listing.h"
 #include "asm.h"
 #include "error.h"
-
+#include <string.h>
 
 int errorCount, warningCount;
 extern int loc;			/* The assembler's location counter */
@@ -64,7 +64,7 @@ extern FILE *inFile;		/* Input file */
 extern FILE *listFile;		/* Listing file */
 extern char listFlag;
 
-extern void strcap(char *, char *);
+extern void strcap(char *, const char *);
 
 void assemble(char *, int *);
 
@@ -79,7 +79,8 @@ char *p;
 }
 
 void strcap(d, s)
-char *d, *s;
+char *d;
+const char *s;
 {
 char capFlag;
 
@@ -97,7 +98,52 @@ char capFlag;
 	*d = '\0';
 }
 
+void nInitProcessText() {
+		loc = 0;
+		lineNum = 1;
+		endFlag = FALSE;
+		errorCount = warningCount = 0;	
+}
 
+void nProcessLine(const char *l, int p2) {
+	char capLine[256];
+	strcpy(line, l);
+	int error;
+	if(p2) {
+		pass2 = TRUE;
+	}
+	else {
+		pass2 = FALSE;
+	}
+	if(!endFlag) {
+			strcap(capLine, line);
+			error = OK;
+			continuation = FALSE;
+			if (pass2 && listFlag) {
+				listLoc();
+			}
+			
+			assemble(capLine, &error);
+
+			if (pass2) {
+				if (error > MINOR) {
+					errorCount++;
+				} else {
+					if (error > WARNING) {
+						warningCount++;
+					}
+				}
+				if (listFlag) {
+					listLine();
+					printError(listFile, error, -1);
+				}
+				printError(stderr, error, lineNum);
+			}
+			lineNum++;
+	}
+}
+
+/* The following is still needed for the old asm */
 void processFile()
 {
 char capLine[256];

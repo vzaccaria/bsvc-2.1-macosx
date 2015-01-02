@@ -30,29 +30,8 @@ R"(asm68k.
 
 using namespace std;
 
-bool newProcess(string inputName, string outputName, bool isObj) {
-  if(isObj) {
-      listFlag = 0;
-      objFlag = 0xFF;
-      // initObj(strdup(outputName.c_str()));
-  } else {
-      listFlag = 0xFF;
-      objFlag = 0;
-      // initList(strdup(outputName.c_str()));
-  }
-  auto content = shell::cat(inputName);
-  auto v = _s::words(content, "\n");
-  for(auto c: v) {
-    cout << c << endl;
-  }
-  return true;
-}
-
 
 bool process(string inputName, string outputName, bool isObj) {
-  debugm("Input file: " + inputName + " -- Outputfile " + outputName + " ");
-  /* This is declared in assemble */
-  inFile = tmpfile();
 
   if(isObj) {
       listFlag = 0;
@@ -64,32 +43,34 @@ bool process(string inputName, string outputName, bool isObj) {
       initList(strdup(outputName.c_str()));
   }
 
-  auto srcFileName = strdup(inputName.c_str());
-  auto srcFile = fopen(srcFileName, "r");
 
-  if(!inFile || !srcFile) {
-    std::cerr << "Valid input srcFileName needed" << endl; exit(1);
+  auto content = shell::cat(inputName);
+  auto v = _s::words(content, "\n");
+
+  for(auto & l: v) {
+    l = l + "\n";
   }
 
-  auto error = buildCompleteSourceFile(srcFile, srcFileName, inFile, 1);
-
-  if(error) {
-    std::cerr << "Cannot build complete source" << endl; exit(1);
+  /* Pass 1 */ 
+  nInitProcessText();
+  for(const auto & c: v) {
+    nProcessLine(c.c_str(), false);
   }
 
-  rewind(inFile);
+  /* Pass 2 */
+  nInitProcessText();
+  for(const auto & c: v) {
+    nProcessLine(c.c_str(), true);
+  }
 
-  processFile();
-
-  fclose(inFile);
-
+  /* Emit */
   if(isObj) {
     finishObj();
   } else {
     fclose(listFile);
   }
 
-  return false;
+  return true;
 }
 
 using std::regex;
@@ -115,12 +96,11 @@ int main(int argc, const char** argv)
 
     auto outputListing = regex_replace(output, regex("\\.h68"), ".lis");
 
-    // if(args.count("--listing") && args["--listing"].asBool()) {
-    //   process(input, outputListing, false);
-    // } else {
-    //   process(input, output, true);
-    // }
-    newProcess(input, output, true);
+    if(args.count("--listing") && args["--listing"].asBool()) {
+      process(input, outputListing, false);
+    } else {
+      process(input, output, true);
+    }
 
 
     return 0;
