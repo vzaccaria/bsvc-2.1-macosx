@@ -23,6 +23,9 @@ THE SOFTWARE.
 #ifndef UNDERSCORE_HXX
 #define UNDERSCORE_HXX
 
+/* import dropbox json11 */
+#include "json11.hpp"
+
 
 namespace _s {
 	using namespace std;
@@ -67,6 +70,15 @@ namespace _ {
 		return ret;
 	}
 
+	static Json indexBy(Json j1, function<Json(Json)> fun) {
+		Json::object ret; 
+		for(const auto v: j1.array_items()) {
+			auto kk = fun(v).string_value();
+			ret[kk] = v;
+		}
+		return ret;
+	}
+
 	static Json filter(Json j1, function<bool(Json)> fun) {
 		vector<Json> res;
 		for(const auto v: j1.array_items()) {
@@ -89,6 +101,29 @@ namespace _ {
 		return res;
 	}
 
+	static Json compact(Json j1) {
+		vector<Json> res;
+		for(const auto v: j1.array_items()) {
+			if(!v.is_null()) {
+				res.push_back(v);
+			}
+		}
+		return res;
+	}
+
+	static Json forEach(Json j1, function<void(Json)> fun) {
+		for(const auto v: j1.array_items()) {
+			fun(v);
+		}
+		return j1;
+	}
+
+	static auto jmap = map;
+
 } // underscore
+
+#define lambda 	[=]
+#define λ      	[=]
+
 
 #endif // UNDERSCORE_HXX
