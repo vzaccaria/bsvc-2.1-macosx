@@ -60,6 +60,7 @@
 #include <string.h>
 #include "asm.h"
 #include "listing.h"
+#include "driver.h"
 
 /* Define the maximum number of bytes (address, data, 
    and checksum) that can be in one S-record */
@@ -80,14 +81,20 @@ char *name;
 {
 short i;
 
-	objFile = fopen(name, "w");
-	if (!objFile) {	
-		puts("Can't open object file");
-		exit(1);
-		}
+	// objFile = fopen(name, "w");
+	// if (!objFile) {	
+	// 	puts("Can't open object file");
+	// 	exit(1);
+	// 	}
 	/* Output S-record file header */
 /*	fputs("Here comes an S-record...\n", objFile); */
-	fputs("S004000020DB\n", objFile);
+	initializeObject();
+
+	// fputs("S004000020DB\n", objFile);
+
+	addObj("S004000020DB\n");
+
+
 	lineFlag = FALSE;
 }
 
@@ -167,11 +174,13 @@ char recLen[3];
 	
 	/* Output the S-record to the object file */
 /*	fputs("Here comes an S-record...\n", objFile); */
-	fputs(sRecord, objFile);
-	if (ferror(objFile)) {
-		fputs(objErrorMsg, stderr);
-		exit(1);
-		}
+
+	addObj(sRecord);
+	// fputs(sRecord, objFile);
+	// if (ferror(objFile)) {
+	// 	fputs(objErrorMsg, stderr);
+	// 	exit(1);
+	// 	}
 }
 
 
@@ -182,10 +191,11 @@ void finishObj()
 		writeObj();
 
 	/* Write out a termination S-record and close the file*/
-	fputs("S9030000FC\n", objFile);
-	if (ferror(objFile)) {
-		fputs(objErrorMsg, stderr);
-		exit(1);
-		}
-	fclose(objFile);
+	addObj("S9030000FC\n");
+	// fputs("S9030000FC\n", objFile);
+	// if (ferror(objFile)) {
+	// 	fputs(objErrorMsg, stderr);
+	// 	exit(1);
+	// 	}
+	// fclose(objFile);
 }	

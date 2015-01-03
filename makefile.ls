@@ -11,7 +11,7 @@ parse ->
         @reduce-files( ("clang $^  -o $@"), "linkedc", "x", files)
 
     @add-plugin 'clangPre',(g, deps) ->
-        @compile-files( (-> "clang++ -c -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
+        @compile-files( (-> "clang++ -c -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
 
     @add-plugin 'link', (files) ->
         @reduce-files( ("clang++ $^  -o $@"), "linked", "x", files)
@@ -37,11 +37,7 @@ parse ->
                 @clang-pre 'sim68k-src/lib/json11/json11.cpp'   , '**/*.h*'
                 ]
 
-        @dest "./bin/oldasm68k", -> 
-            @gccLink -> [
-                @gcc 'asm68k-src/*.c'            
-                @gcc 'asm68k-src/old/main.c'
-                ]
+
         ]
 
         

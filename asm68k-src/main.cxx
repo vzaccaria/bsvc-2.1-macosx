@@ -5,6 +5,7 @@
 #include "src/print.hxx"
 #include "lib/shell.hxx"
 #include "lib/underscore.hxx"
+#include "driver.hxx"
 
 extern "C" {
   #include "assemble.h"
@@ -31,47 +32,6 @@ R"(asm68k.
 using namespace std;
 
 
-bool process(string inputName, string outputName, bool isObj) {
-
-  if(isObj) {
-      listFlag = 0;
-      objFlag = 0xFF;
-      initObj(strdup(outputName.c_str()));
-  } else {
-      listFlag = 0xFF;
-      objFlag = 0;
-      initList(strdup(outputName.c_str()));
-  }
-
-
-  auto content = shell::cat(inputName);
-  auto v = _s::words(content, "\n");
-
-  for(auto & l: v) {
-    l = l + "\n";
-  }
-
-  /* Pass 1 */ 
-  nInitProcessText();
-  for(const auto & c: v) {
-    nProcessLine(c.c_str(), false);
-  }
-
-  /* Pass 2 */
-  nInitProcessText();
-  for(const auto & c: v) {
-    nProcessLine(c.c_str(), true);
-  }
-
-  /* Emit */
-  if(isObj) {
-    finishObj();
-  } else {
-    fclose(listFile);
-  }
-
-  return true;
-}
 
 using std::regex;
 using std::regex_replace;

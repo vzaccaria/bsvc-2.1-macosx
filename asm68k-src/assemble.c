@@ -143,49 +143,6 @@ void nProcessLine(const char *l, int p2) {
 	}
 }
 
-/* The following is still needed for the old asm */
-void processFile()
-{
-char capLine[256];
-int error;
-char pass;
-
-	pass2 = FALSE;
-	for (pass = 0; pass < 2; pass++) {
-		loc = 0;
-		lineNum = 1;
-		endFlag = FALSE;
-		errorCount = warningCount = 0;
-		while(!endFlag && fgets(line, 256, inFile)) {
-			strcap(capLine, line);
-			error = OK;
-			continuation = FALSE;
-			if (pass2 && listFlag)
-				listLoc();
-			assemble(capLine, &error);
-			if (pass2) {
-				if (error > MINOR)
-					errorCount++;
-				else if (error > WARNING)
-					warningCount++;
-				if (listFlag) {
-					listLine();
-					printError(listFile, error, -1);
-					}
-				printError(stderr, error, lineNum);
-				}
-			lineNum++;
-			}
-		if (!pass2) {
-			pass2 = TRUE;
-/*			puts("************************************************************");
-			puts("********************  STARTING PASS 2  *********************");
-			puts("************************************************************"); */
-			}
-		rewind(inFile);
-		}
-}
-
 
 void assemble(line, errorPtr)
 char *line;
