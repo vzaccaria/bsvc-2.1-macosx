@@ -31,11 +31,16 @@ namespace shell {
 
 	using namespace std;
 
-	static	string cat(string filename) {
+	static string cat(string filename) {
 		ifstream t(filename);
 		stringstream buffer;
 		buffer << t.rdbuf();
 		return buffer.str();
+	}
+
+	static void to(string filename, string content) {
+		ofstream t(filename);
+		t << content;
 	}
 }
 
