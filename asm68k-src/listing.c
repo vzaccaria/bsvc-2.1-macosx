@@ -61,13 +61,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "asm.h"
+#include "driver.h"
 
 
 /* Declarations of global variables */
 extern int loc;
 extern char pass2, cexFlag, continuation;
 extern char line[256];
-extern FILE *listFile;
+char dline[256];
 extern int lineNum;
 
 static char listData[49];      /* Buffer in which listing lines are assembled */
@@ -78,28 +79,21 @@ extern char *listPtr;	       /* Pointer to above buffer (this pointer is
 void initList(name)
 char *name;
 {
-short i;
-
-	listFile = fopen(name, "w");
-	if (!listFile) {	
-		puts("Can't open listing file");
-		exit(1);
-		}
+ 	initializeList();
 }
 
 
 void listLine()
 {
 	
-	fprintf(listFile, "%-41.41s", listData);
-	if (!continuation)
-		fprintf(listFile, "%5d  %s", lineNum, line);
-	else
-		putc('\n', listFile);
-	if (ferror(listFile)) {
-		fputs("Error writing to listing file\n", stderr);
-		exit(1);
-		}
+	sprintf(dline, "%-41.41s", listData);
+	addListing(dline);
+	if (!continuation) {
+		sprintf(dline, "%5d  %s", lineNum, line);
+		addListing(dline);
+	} else {
+		addListing("\n");
+	}
 }
 
 

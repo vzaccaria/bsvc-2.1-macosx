@@ -60,8 +60,6 @@ extern char continuation;	/* TRUE if the listing line is a continuation */
 extern int lineNum;
 
 extern char line[256];		/* Source line */
-extern FILE *inFile;		/* Input file */
-extern FILE *listFile;		/* Listing file */
 extern char listFlag;
 
 extern void strcap(char *, const char *);
@@ -135,7 +133,6 @@ void nProcessLine(const char *l, int p2) {
 				}
 				if (listFlag) {
 					listLine();
-					printError(listFile, error, -1);
 				}
 				printError(stderr, error, lineNum);
 			}

@@ -44,6 +44,7 @@ parse ->
     @collect "all", ->
         @command-seq -> [
             @make "build"
+            @cmd "DEBUG_COLORS=no DEBUG=* ./test/test.sh"
             ]
 
     @collect "clean", -> [

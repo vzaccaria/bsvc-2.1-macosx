@@ -5,9 +5,6 @@ extern char* buildCompleteSourceFile(FILE* currentFile, char* currentFileName, F
 extern void strcap(char *, char *);
 extern char *skipSpace(char *);
 
-extern FILE *inFile;	/* Input file */
-extern FILE *listFile;	/* Listing file */
-extern FILE *objFile;	/* Object file */
 extern char line[256];	/* Source line */
 extern int errorCount, warningCount;	/* Number of errors and warnings */
 

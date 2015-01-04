@@ -18,6 +18,5 @@ extern "C" {
 }
 
 extern bool process(std::string inputName, std::string outputName, bool isObj);
-extern "C" void initializeObject();
 
 #endif // DRIVER_HXX

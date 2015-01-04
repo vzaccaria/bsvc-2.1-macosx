@@ -4,15 +4,22 @@
 using namespace std;
 
 string objectFile;
+string listingFile;
 
 extern "C" void initializeObject() {
-	debugm("Initializing object file");
 	objectFile="";
 }
 
+extern "C" void initializeList() {
+  listingFile = "";
+}
+
 extern "C" void addObj(const char *str) {
-	debugm("New object data: " + string(str));
 	objectFile = objectFile + string(str);
+}
+
+extern "C" void addListing(const char *str) {
+  listingFile = listingFile + string(str);
 }
 
 bool process(string inputName, string outputName, bool isObj) {
@@ -51,7 +58,7 @@ bool process(string inputName, string outputName, bool isObj) {
     finishObj();
     shell::to(outputName, objectFile);
   } else {
-    fclose(listFile);
+    shell::to(outputName, listingFile);
   }
 
   return true;

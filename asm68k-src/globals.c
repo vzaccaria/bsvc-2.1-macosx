@@ -28,10 +28,6 @@ char endFlag;		/* Flag set when the END directive is encountered */
 
 /* File pointers */
 
-FILE *inFile;		/* Input file */
-FILE *listFile;		/* Listing file */
-FILE *objFile;		/* Object file */
-
 
 /* Listing information */
 
