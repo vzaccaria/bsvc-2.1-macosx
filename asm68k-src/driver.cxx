@@ -22,19 +22,7 @@ extern "C" void addListing(const char *str) {
   listingFile = listingFile + string(str);
 }
 
-bool process(string inputName, string outputName, bool isObj) {
-
-  if(isObj) {
-      listFlag = 0;
-      objFlag = 0xFF;
-      initObj(strdup(outputName.c_str()));
-  } else {
-      listFlag = 0xFF;
-      objFlag = 0;
-      initList(strdup(outputName.c_str()));
-  }
-
-  auto content = shell::cat(inputName);
+void assembleIt(string content) {
   auto v = _s::words(content, "\n");
 
   for(auto & l: v) {
@@ -52,13 +40,33 @@ bool process(string inputName, string outputName, bool isObj) {
   for(const auto & c: v) {
     nProcessLine(c.c_str(), true);
   }
+}
 
-  /* Emit */
+string assembleObj(string content) {
+      listFlag = 0;
+      objFlag = 0xFF;
+
+      initObj();
+      assembleIt(content);
+      finishObj();
+
+      return objectFile;
+}
+
+string assembleListing(string content) {
+      listFlag = 0xFF;
+      objFlag = 0;
+      initList();
+      assembleIt(content);
+      return listingFile;
+}
+
+bool process(string inputName, string outputName, bool isObj) {
+
   if(isObj) {
-    finishObj();
-    shell::to(outputName, objectFile);
+      shell::to(outputName, assembleObj(shell::cat(inputName)));
   } else {
-    shell::to(outputName, listingFile);
+      shell::to(outputName, assembleListing(shell::cat(inputName)));
   }
 
   return true;

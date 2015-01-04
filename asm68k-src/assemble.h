@@ -14,7 +14,7 @@ extern char xrefFlag;		/* True if a cross-reference is desired */
 extern char cexFlag;		/* True is Constants are to be EXpanded */
 extern char absLongFlag;	/* True if all long absolute addresses */
 
-extern void initList(char *);
-extern void initObj(char *);
+extern void initList();
+extern void initObj();
 extern void nInitProcessText();
 extern void nProcessLine(const char *line, int pass2);

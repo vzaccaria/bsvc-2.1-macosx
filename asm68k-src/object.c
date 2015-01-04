@@ -75,8 +75,7 @@ static char objErrorMsg[] = "Error writing to object file\n";
 void writeObj();
 int checkValue(int);
 
-void initObj(name)
-char *name;
+void initObj()
 {
 short i;
 	initializeObject();
