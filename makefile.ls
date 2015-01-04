@@ -31,15 +31,12 @@ parse ->
 
         @dest "./bin/asm68k", -> 
             @link -> [
-                @gcc 'asm68k-src/*.c'                           , '**/*.h*'
-                @clang-pre 'asm68k-src/*.cxx'                   , '**/*.h*'
-                @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'   , '**/*.h*'
-                @clang-pre 'sim68k-src/lib/json11/json11.cpp'   , '**/*.h*'
+                @gcc 'asm68k-src/*.c'                           , 'asm68k-src/*.h'
+                @clang-pre 'asm68k-src/*.cxx'                   , [ 'asm68k-src/*.hxx', 'sim68k-src/lib/docopt/*.h*', 'sim68k-src/lib/json11/*.h*' ]
+                @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'   , 'sim68k-src/lib/docopt/*.h*'
+                @clang-pre 'sim68k-src/lib/json11/json11.cpp'   , 'sim68k-src/lib/json11/*.h*'
                 ]
-
-
         ]
-
         
     @collect "all", ->
         @command-seq -> [
@@ -50,8 +47,6 @@ parse ->
     @collect "clean", -> [
         @remove-all-targets()
         ]
-
-
 
         # @dest "./bin/frontend", -> 
         #         
