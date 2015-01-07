@@ -44,7 +44,7 @@ class Loader : public BasicLoader {
 
   private:
     // Load in a Motorola S-Record file
-    string LoadMotorolaSRecord(fstream& file, int addressSpace);
+    string LoadMotorolaSRecord(vector<string> & file, int addressSpace);
 };
 #endif
 

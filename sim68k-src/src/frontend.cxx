@@ -1,6 +1,7 @@
 #include "docopt.h"
 #include "src/run.hxx"
 #include "lib/debug.hxx"
+#include "lib/shell.hxx"
 #include <iostream>
 #include "src/print.hxx"
 
@@ -8,12 +9,13 @@ static const char USAGE[] =
 R"(sim68k.
 
     Usage:
-      sim68k <program> [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR]
+      sim68k <program> [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR] [ -i | --stdin ]
       sim68k (-h | --help)
       sim68k(-v | --version)
 
     Options:
-      -j --json               Output in json format
+      -j, --json              Inputfile is Json
+      -i, --stdin             Inputfile is from stdin
       -n N, --num_inst N      Number of instructions to execute 
       -s ADDR, --start ADDR   Specify hex start address (default is 2000)
       -h --help               Show this screen.
@@ -22,6 +24,9 @@ R"(sim68k.
 )";
 
 using namespace std;
+
+#define checkopt(v) (args.count(v) && args[v].asBool())
+#define checkopts(v) (args.count(v) && args[v].isString())
 
 int main(int argc, const char** argv)
 {
@@ -35,19 +40,24 @@ int main(int argc, const char** argv)
     auto instructions = (long) -1;
     auto start = string("2000");
 
-    if(args.count("--num_inst") && args["--num_inst"].isString()) {
+    if(checkopts("--num_inst")) {
       instructions = stol(args["--num_inst"].asString());
     } else {
       instructions = 10;
     }
 
-    if(args.count("--start") && args["--start"].isString()) {
+    if(checkopts("--start")) {
       start = args["--start"].asString();
     }
-
     try {
+      string program = shell::cat(program_name);
+      if(checkopt("--json")) {
+          string error;
+          program = (json11::Json::parse(program, error))["object"].string_value();
+      }
+
       setupSimulation(); 
-      auto res = run(program_name, instructions, true, start);
+      auto res = run(program, instructions, true, start);
       printTrace(res);
     }
     catch(char const *e) {
