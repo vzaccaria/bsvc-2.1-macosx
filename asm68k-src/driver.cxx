@@ -1,10 +1,20 @@
 #include "driver.hxx"
 #include "debug.hxx"
+#include "json11.hpp"
 
 using namespace std;
+using namespace json11;
 
 string objectFile;
 string listingFile;
+
+typedef map<string, Json> symbolTable;
+
+symbolTable symTable;
+
+extern "C" void defineSymbol(const char *sym, const int val) {
+  symTable[sym] = val;
+}
 
 extern "C" void initializeObject() {
 	objectFile="";
@@ -61,13 +71,12 @@ string assembleListing(string content) {
       return listingFile;
 }
 
-bool process(string inputName, string outputName, bool isObj) {
-
-  if(isObj) {
-      shell::to(outputName, assembleObj(shell::cat(inputName)));
-  } else {
-      shell::to(outputName, assembleListing(shell::cat(inputName)));
-  }
-
-  return true;
+string assembleJson(string content) {
+  auto ob = assembleObj(content);
+  Json out = Json::object {
+    { "object", ob }, 
+    { "sym", symTable }
+  };
+  return out.dump();
 }
+

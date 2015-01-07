@@ -17,6 +17,7 @@ extern "C" {
   #include "object.h"
 }
 
-extern bool process(std::string inputName, std::string outputName, bool isObj);
-
+extern std::string assembleObj(std::string content);
+extern std::string assembleListing(std::string content);
+extern std::string assembleJson(std::string content);
 #endif // DRIVER_HXX

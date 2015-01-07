@@ -60,6 +60,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "asm.h"
+#include "driver.h"
 
 int hash(char *);
 
@@ -159,7 +160,7 @@ char *sym;
 int value, check, *errorPtr;
 {
     symbolDef *symbol;
-
+    defineSymbol(sym, value);
     symbol = lookup(sym, !check, errorPtr);
     if (*errorPtr < ERROR) {
         if (check)
