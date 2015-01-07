@@ -62,15 +62,22 @@ int main(int argc, const char** argv)
     string result;
 
     if(checkopt("--json")) {
+
       outputName = regex_replace(output, regex("\\.h68"), ".json");
       result = assembleJson(inputfile);
+
     } else {
+
         if(checkopt("--listing")) {
+
           result = assembleListing(inputfile);
           outputName = regex_replace(output, regex("\\.h68"), ".lis");
+
         } else {
+
           outputName = output;
           result = assembleObj(inputfile);
+          
         }
     }
 
