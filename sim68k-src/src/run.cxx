@@ -117,7 +117,7 @@ Json execInstruction() {
 	};
 }
 
-Json run(string program, long instructions, bool json, string start_address) {
+Json run(string program, long instructions, bool json, string start_address, string track="") {
 	vector<Json> inst;
 	int n = 0;
 
@@ -126,6 +126,8 @@ Json run(string program, long instructions, bool json, string start_address) {
 	if(ls != "") {
 		throw "Error loading file";
 	}
+
+	debugm("Tracking " + track);
 
 	processor->Reset();
 	processor->SetRegister("PC", start_address);

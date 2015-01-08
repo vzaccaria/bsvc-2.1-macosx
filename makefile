@@ -155,25 +155,30 @@ cmd-45:
 cmd-46: 
 	DEBUG_COLORS=no DEBUG=* ./test/test.sh
 
-.PHONY : cmd-seq-47
-cmd-seq-47: 
+.PHONY : cmd-47
+cmd-47: 
+	./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t "D0.L,Z.b,SUM.1W"
+
+.PHONY : cmd-seq-48
+cmd-seq-48: 
 	make cmd-45
 	make cmd-46
+	make cmd-47
 
 .PHONY : all
-all: cmd-seq-47
-
-.PHONY : clean-48
-clean-48: 
-	rm -rf .build/1-docopt.o .build/2-json11.o .build/3-decode.o .build/4-exec.o .build/5-m68000.o .build/6-DeviceRegistry.o .build/7-M68681.o .build/8-RAM.o .build/9-Timer.o .build/10-Loader.o .build/11-frontend.o .build/12-print.o .build/13-run.o .build/14-AddressSpace.o .build/15-BasicCPU.o .build/16-BasicDevice.o .build/17-BasicDeviceRegistry.o .build/18-BreakpointList.o .build/19-Event.o .build/20-Interface.o .build/21-RegInfo.o .build/22-StatInfo.o .build/23-Time.o .build/24-Tools.o .build/linked0.x ./bin ./bin/sim68k .build/26-assemble.o .build/27-build.o .build/28-codegen.o .build/29-directive.o .build/30-error.o .build/31-eval.o .build/32-globals.o .build/33-include.o .build/34-instlookup.o .build/35-insttable.o .build/36-listing.o .build/37-movem.o .build/38-object.o .build/39-opparse.o .build/40-symbol.o .build/41-driver.o .build/42-main.o .build/43-docopt.o .build/44-json11.o .build/linked25.x ./bin/asm68k
+all: cmd-seq-48
 
 .PHONY : clean-49
 clean-49: 
-	rm -rf .build
+	rm -rf .build/1-docopt.o .build/2-json11.o .build/3-decode.o .build/4-exec.o .build/5-m68000.o .build/6-DeviceRegistry.o .build/7-M68681.o .build/8-RAM.o .build/9-Timer.o .build/10-Loader.o .build/11-frontend.o .build/12-print.o .build/13-run.o .build/14-AddressSpace.o .build/15-BasicCPU.o .build/16-BasicDevice.o .build/17-BasicDeviceRegistry.o .build/18-BreakpointList.o .build/19-Event.o .build/20-Interface.o .build/21-RegInfo.o .build/22-StatInfo.o .build/23-Time.o .build/24-Tools.o .build/linked0.x ./bin ./bin/sim68k .build/26-assemble.o .build/27-build.o .build/28-codegen.o .build/29-directive.o .build/30-error.o .build/31-eval.o .build/32-globals.o .build/33-include.o .build/34-instlookup.o .build/35-insttable.o .build/36-listing.o .build/37-movem.o .build/38-object.o .build/39-opparse.o .build/40-symbol.o .build/41-driver.o .build/42-main.o .build/43-docopt.o .build/44-json11.o .build/linked25.x ./bin/asm68k
 
 .PHONY : clean-50
 clean-50: 
+	rm -rf .build
+
+.PHONY : clean-51
+clean-51: 
 	mkdir -p .build
 
 .PHONY : clean
-clean: clean-48 clean-49 clean-50
+clean: clean-49 clean-50 clean-51

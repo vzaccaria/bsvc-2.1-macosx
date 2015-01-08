@@ -10,16 +10,17 @@ static const char USAGE[] =
 R"(sim68k.
 
     Usage:
-      sim68k [ <program> ] [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR] 
+      sim68k [ <program> ] [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR ] [ -t TRACK | --track TRACK ]
       sim68k (-h | --help)
       sim68k(-v | --version)
 
     Options:
-      -j, --json              Inputfile is Json
-      -n N, --num_inst N      Number of instructions to execute 
-      -s ADDR, --start ADDR   Specify hex start address (default is 2000)
-      -h --help               Show this screen.
-      -v --version            Program version
+      -j, --json                  Inputfile is Json
+      -t TRACK, --track TRACK     List of regs, status bits, and symbols to track
+      -n N, --num_inst N          Number of instructions to execute 
+      -s ADDR, --start ADDR       Specify hex start address (default is 2000)
+      -h --help                   Show this screen.
+      -v --version                Program version
 
 )";
 
@@ -38,6 +39,7 @@ int main(int argc, const char** argv)
 
     auto instructions = (long) -1;
     auto start = string("2000");
+    auto track = string("");
 
     if(checkopts("--num_inst")) {
       instructions = stol(args["--num_inst"].asString());
@@ -47,6 +49,10 @@ int main(int argc, const char** argv)
 
     if(checkopts("--start")) {
       start = args["--start"].asString();
+    }
+
+    if(checkopts("--track")) {
+      track = args["--track"].asString();
     }
 
     try {
@@ -66,7 +72,7 @@ int main(int argc, const char** argv)
       }
 
       setupSimulation(); 
-      auto res = run(program, instructions, true, start);
+      auto res = run(program, instructions, true, start, track);
       printTrace(res);
     }
     catch(char const *e) {
@@ -75,11 +81,6 @@ int main(int argc, const char** argv)
       exit(1);
     }
 
-
-    // if(args["--json"].asBool()) {
-    //     cout << "Seems json was called" << "\n";
-    // }
-    // cout << program_name;
 
     return 0;
 }
