@@ -50,7 +50,7 @@
 #include "listing.h"
 #include "asm.h"
 #include "error.h"
-
+#include <string.h>
 
 int errorCount, warningCount;
 extern int loc;			/* The assembler's location counter */
@@ -60,11 +60,9 @@ extern char continuation;	/* TRUE if the listing line is a continuation */
 extern int lineNum;
 
 extern char line[256];		/* Source line */
-extern FILE *inFile;		/* Input file */
-extern FILE *listFile;		/* Listing file */
 extern char listFlag;
 
-extern void strcap(char *, char *);
+extern void strcap(char *, const char *);
 
 void assemble(char *, int *);
 
@@ -79,7 +77,8 @@ char *p;
 }
 
 void strcap(d, s)
-char *d, *s;
+char *d;
+const char *s;
 {
 char capFlag;
 
@@ -97,47 +96,48 @@ char capFlag;
 	*d = '\0';
 }
 
-
-void processFile()
-{
-char capLine[256];
-int error;
-char pass;
-
-	pass2 = FALSE;
-	for (pass = 0; pass < 2; pass++) {
+void nInitProcessText() {
 		loc = 0;
 		lineNum = 1;
 		endFlag = FALSE;
-		errorCount = warningCount = 0;
-		while(!endFlag && fgets(line, 256, inFile)) {
+		errorCount = warningCount = 0;	
+}
+
+void nProcessLine(const char *l, int p2) {
+	char capLine[256];
+	strcpy(line, l);
+	int error;
+	if(p2) {
+		pass2 = TRUE;
+	}
+	else {
+		pass2 = FALSE;
+	}
+	if(!endFlag) {
 			strcap(capLine, line);
 			error = OK;
 			continuation = FALSE;
-			if (pass2 && listFlag)
+			if (pass2 && listFlag) {
 				listLoc();
+			}
+			
 			assemble(capLine, &error);
+
 			if (pass2) {
-				if (error > MINOR)
+				if (error > MINOR) {
 					errorCount++;
-				else if (error > WARNING)
-					warningCount++;
+				} else {
+					if (error > WARNING) {
+						warningCount++;
+					}
+				}
 				if (listFlag) {
 					listLine();
-					printError(listFile, error, -1);
-					}
-				printError(stderr, error, lineNum);
 				}
+				printError(stderr, error, lineNum);
+			}
 			lineNum++;
-			}
-		if (!pass2) {
-			pass2 = TRUE;
-/*			puts("************************************************************");
-			puts("********************  STARTING PASS 2  *********************");
-			puts("************************************************************"); */
-			}
-		rewind(inFile);
-		}
+	}
 }
 
 

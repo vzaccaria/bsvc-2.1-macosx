@@ -1,4 +1,4 @@
 
 extern void outputObj(int, int ,int);
-extern void initObj(char *);
+extern void initObj();
 extern void finishObj(void);

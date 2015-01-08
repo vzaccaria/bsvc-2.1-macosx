@@ -19,6 +19,7 @@ static vector<int> range(int x,int y) {
 }
 
 using namespace json11;
+using namespace _;
 
 auto processor = new m68000;
 auto loader = new Loader(*processor);
@@ -35,10 +36,10 @@ void setupSimulation() {
 
 Json diff(Json j1, Json j2) {
 	vector<Json> rdiff;
-	auto ji1 = _::indexBy(j1, "name");
-	auto ji2 = _::indexBy(j2, "name");
+	auto ji1 = indexBy(j1, "name");
+	auto ji2 = indexBy(j2, "name");
 
-	return _::map(j1, [=](Json v) -> Json {
+	return compact(jmap(j1, lambda(Json v) -> Json {
 
 		auto element = v["name"].string_value();
 
@@ -54,7 +55,7 @@ Json diff(Json j1, Json j2) {
 			return Json();
 		}
 
-	});
+	}));
 }
 
 #define FLAG(V, FNAME) ((int) (V & processor->FNAME) ? 1 : 0)

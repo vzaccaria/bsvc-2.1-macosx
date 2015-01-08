@@ -23,12 +23,46 @@ THE SOFTWARE.
 #ifndef UNDERSCORE_HXX
 #define UNDERSCORE_HXX
 
+/* import dropbox json11 */
+#include "json11.hpp"
+
+
+namespace _s {
+	using namespace std;
+
+	static vector<string> words(string str, string delim = " ") {
+		vector<string> res;
+		auto pos = 0;
+		while( (pos = str.find(delim)) != string::npos) {
+			res.push_back(str.substr(0, pos));
+			str.erase(0, pos + delim.length());
+		}
+		res.push_back(str);
+		return res;
+	}
+
+	static string sentence(vector<string> v, string delim = " ") {
+		string s = "";
+		auto l = v.size();
+		for(auto x=0; x<l; x++) {
+			s = s + v[x]; 
+			if(x != (l-1)) {
+				s = s + delim;
+			}
+		}
+		return s;
+	}
+}
+
 namespace _ {
+
+	using namespace json11;
+	using namespace std;
 
 	/* Warning, this assumes there are no two values with the same key */
 
-	static json11::Json indexBy(json11::Json j1, string key) {
-		json11::Json::object ret; 
+	static Json indexBy(Json j1, string key) {
+		Json::object ret; 
 		for(const auto v: j1.array_items()) {
 			auto kk = v[key].string_value();
 			ret[kk] = v;
@@ -36,8 +70,28 @@ namespace _ {
 		return ret;
 	}
 
-	json11::Json map(json11::Json j1, std::function<json11::Json(json11::Json)> fun) {
-		vector<json11::Json> res;
+	static Json indexBy(Json j1, function<Json(Json)> fun) {
+		Json::object ret; 
+		for(const auto v: j1.array_items()) {
+			auto kk = fun(v).string_value();
+			ret[kk] = v;
+		}
+		return ret;
+	}
+
+	static Json filter(Json j1, function<bool(Json)> fun) {
+		vector<Json> res;
+		for(const auto v: j1.array_items()) {
+			auto x = fun(v);
+			if(x) {
+				res.push_back(x);
+			}
+		}
+		return res;		
+	}
+
+	static Json map(Json j1, function<Json(Json)> fun) {
+		vector<Json> res;
 		for(const auto v: j1.array_items()) {
 			auto x = fun(v);
 			if(!x.is_null()) {
@@ -47,6 +101,29 @@ namespace _ {
 		return res;
 	}
 
+	static Json compact(Json j1) {
+		vector<Json> res;
+		for(const auto v: j1.array_items()) {
+			if(!v.is_null()) {
+				res.push_back(v);
+			}
+		}
+		return res;
+	}
+
+	static Json forEach(Json j1, function<void(Json)> fun) {
+		for(const auto v: j1.array_items()) {
+			fun(v);
+		}
+		return j1;
+	}
+
+	static auto jmap = map;
+
 } // underscore
+
+#define lambda 	[=]
+#define λ      	[=]
+
 
 #endif // UNDERSCORE_HXX

@@ -11,7 +11,7 @@ parse ->
         @reduce-files( ("clang $^  -o $@"), "linkedc", "x", files)
 
     @add-plugin 'clangPre',(g, deps) ->
-        @compile-files( (-> "clang++ -c -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
+        @compile-files( (-> "clang++ -c -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
 
     @add-plugin 'link', (files) ->
         @reduce-files( ("clang++ $^  -o $@"), "linked", "x", files)
@@ -31,30 +31,22 @@ parse ->
 
         @dest "./bin/asm68k", -> 
             @link -> [
-                @gcc 'asm68k-src/*.c'            
-                @clang-pre 'asm68k-src/*.cxx'
-                @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'
-                @clang-pre 'sim68k-src/lib/json11/json11.cpp'
-                ]
-
-        @dest "./bin/oldasm68k", -> 
-            @gccLink -> [
-                @gcc 'asm68k-src/*.c'            
-                @gcc 'asm68k-src/old/main.c'
+                @gcc 'asm68k-src/*.c'                           , 'asm68k-src/*.h'
+                @clang-pre 'asm68k-src/*.cxx'                   , [ 'asm68k-src/*.hxx', 'sim68k-src/lib/docopt/*.h*', 'sim68k-src/lib/json11/*.h*' ]
+                @clang-pre 'sim68k-src/lib/docopt/docopt.cpp'   , 'sim68k-src/lib/docopt/*.h*'
+                @clang-pre 'sim68k-src/lib/json11/json11.cpp'   , 'sim68k-src/lib/json11/*.h*'
                 ]
         ]
-
         
     @collect "all", ->
         @command-seq -> [
             @make "build"
+            @cmd "DEBUG_COLORS=no DEBUG=* ./test/test.sh"
             ]
 
     @collect "clean", -> [
         @remove-all-targets()
         ]
-
-
 
         # @dest "./bin/frontend", -> 
         #         

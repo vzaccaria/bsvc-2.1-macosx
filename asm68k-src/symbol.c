@@ -60,6 +60,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "asm.h"
+#include "driver.h"
 
 int hash(char *);
 
@@ -99,8 +100,10 @@ int create, *errorPtr;
         /* If a match was found, return pointer to the structure */
         if (s && !cmp)
         {
-            if (create)
+            if (create) {
+                printf("Symbol `%s` already defined\n", sym);
                 NEWERROR(*errorPtr, MULTIPLE_DEFS);
+            }
             t = s;
         }
         /* Otherwise insert the symbol in the list */
@@ -157,7 +160,7 @@ char *sym;
 int value, check, *errorPtr;
 {
     symbolDef *symbol;
-
+    defineSymbol(sym, value);
     symbol = lookup(sym, !check, errorPtr);
     if (*errorPtr < ERROR) {
         if (check)

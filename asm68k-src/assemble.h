@@ -5,9 +5,6 @@ extern char* buildCompleteSourceFile(FILE* currentFile, char* currentFileName, F
 extern void strcap(char *, char *);
 extern char *skipSpace(char *);
 
-extern FILE *inFile;	/* Input file */
-extern FILE *listFile;	/* Listing file */
-extern FILE *objFile;	/* Object file */
 extern char line[256];	/* Source line */
 extern int errorCount, warningCount;	/* Number of errors and warnings */
 
@@ -17,5 +14,7 @@ extern char xrefFlag;		/* True if a cross-reference is desired */
 extern char cexFlag;		/* True is Constants are to be EXpanded */
 extern char absLongFlag;	/* True if all long absolute addresses */
 
-extern void initList(char *);
-extern void initObj(char *);
+extern void initList();
+extern void initObj();
+extern void nInitProcessText();
+extern void nProcessLine(const char *line, int pass2);

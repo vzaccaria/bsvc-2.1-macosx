@@ -16,3 +16,6 @@ test/base/test0/test.h68
 test/base/test1/test.h68
 test/base/test1/test.lis
 test/base/test1/test.txt
+x.h68
+x.lis
+examples/example.json

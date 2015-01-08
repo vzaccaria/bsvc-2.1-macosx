@@ -60,13 +60,13 @@
 #include <string.h>
 #include "asm.h"
 #include "listing.h"
+#include "driver.h"
 
 /* Define the maximum number of bytes (address, data, 
    and checksum) that can be in one S-record */
 #define SRECSIZE  36	
 
 extern char line[256];
-extern FILE *objFile;
 
 static char sRecord[80], *objPtr;
 static char byteCount, checksum, lineFlag;
@@ -75,19 +75,11 @@ static char objErrorMsg[] = "Error writing to object file\n";
 void writeObj();
 int checkValue(int);
 
-void initObj(name)
-char *name;
+void initObj()
 {
 short i;
-
-	objFile = fopen(name, "w");
-	if (!objFile) {	
-		puts("Can't open object file");
-		exit(1);
-		}
-	/* Output S-record file header */
-/*	fputs("Here comes an S-record...\n", objFile); */
-	fputs("S004000020DB\n", objFile);
+	initializeObject();
+	addObj("S004000020DB\n");
 	lineFlag = FALSE;
 }
 
@@ -166,12 +158,8 @@ char recLen[3];
 	sprintf(objPtr, "%02X\n", (~checksum & 0xFF));
 	
 	/* Output the S-record to the object file */
-/*	fputs("Here comes an S-record...\n", objFile); */
-	fputs(sRecord, objFile);
-	if (ferror(objFile)) {
-		fputs(objErrorMsg, stderr);
-		exit(1);
-		}
+	addObj(sRecord);
+
 }
 
 
@@ -182,10 +170,5 @@ void finishObj()
 		writeObj();
 
 	/* Write out a termination S-record and close the file*/
-	fputs("S9030000FC\n", objFile);
-	if (ferror(objFile)) {
-		fputs(objErrorMsg, stderr);
-		exit(1);
-		}
-	fclose(objFile);
+	addObj("S9030000FC\n");
 }	

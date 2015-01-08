@@ -60,7 +60,6 @@
 
 extern int loc;
 extern char pass2;
-extern FILE *listFile;
 
 
 extern char listFlag;	/* True if a listing is desired */

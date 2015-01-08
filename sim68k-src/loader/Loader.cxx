@@ -17,43 +17,45 @@
 #include "BasicCPU.hxx"
 #include "Tools.hxx"
 #include "Loader.hxx"
+#include "lib/underscore.hxx"
+#include "debug.hxx"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Loads the named file and answers an error message or the empty string
 ///////////////////////////////////////////////////////////////////////////////
-string Loader::Load(const char* filename, int addressSpace)
+string Loader::Load(const char* file, int addressSpace)
 {
-  string error;
+  // string error;
 
-  // Open the file for reading
-  #ifdef USE_STD
-    fstream file(filename, ios::in);
-  #else
-    fstream file(filename, ios::in | ios::nocreate);
-  #endif
+  // // Open the file for reading
+  // #ifdef USE_STD
+  //   fstream file(filename, ios::in);
+  // #else
+  //   fstream file(filename, ios::in | ios::nocreate);
+  // #endif
 
-  // Make sure the file was opened
-  if(file.fail())
-  {
-    return "ERROR: Could not open file!!!";
-  }
+  // // Make sure the file was opened
+  // if(file.fail())
+  // {
+  //   return "ERROR: Could not open file!!!";
+  // }
 
   // Try to load a motorola S-record file
-  return LoadMotorolaSRecord(file, addressSpace);
+  auto fileLines = _s::words(string(file), "\n");
+  return LoadMotorolaSRecord(fileLines, addressSpace);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Load in a Motorola S-Record file into an address space
 ///////////////////////////////////////////////////////////////////////////////
-string Loader::LoadMotorolaSRecord(fstream& file, int addressSpace)
+string Loader::LoadMotorolaSRecord(vector<string> & fileLines, int addressSpace)
 {
   unsigned long address;
   string line;
   int t, length, byte;
- 
-  while(!file.eof() && file.good())
+
+  for(auto line: fileLines) 
   {
-    file >> line;
     if(line.length() <= 0)
     {
       return("ERROR: Bad line in file!!!");
