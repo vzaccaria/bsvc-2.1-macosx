@@ -31,6 +31,16 @@ namespace shell {
 
 	using namespace std;
 
+	static string catin() {
+		string line;
+		string complete = "";
+		while (getline(cin, line))
+		{
+			complete = complete + line + "\n";
+		}
+		return complete;
+	}
+
 	static string cat(string filename) {
 		ifstream t(filename);
 		stringstream buffer;

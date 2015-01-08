@@ -4,18 +4,18 @@
 #include "lib/shell.hxx"
 #include <iostream>
 #include "src/print.hxx"
+#include <sstream>
 
 static const char USAGE[] =
 R"(sim68k.
 
     Usage:
-      sim68k <program> [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR] [ -i | --stdin ]
+      sim68k [ <program> ] [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR] 
       sim68k (-h | --help)
       sim68k(-v | --version)
 
     Options:
       -j, --json              Inputfile is Json
-      -i, --stdin             Inputfile is from stdin
       -n N, --num_inst N      Number of instructions to execute 
       -s ADDR, --start ADDR   Specify hex start address (default is 2000)
       -h --help               Show this screen.
@@ -25,7 +25,7 @@ R"(sim68k.
 
 using namespace std;
 
-#define checkopt(v) (args.count(v) && args[v].asBool())
+#define checkopt(v) (args.count(v) && args[v].isBool() && args[v].asBool())
 #define checkopts(v) (args.count(v) && args[v].isString())
 
 int main(int argc, const char** argv)
@@ -36,7 +36,6 @@ int main(int argc, const char** argv)
                          true,             // show help if requested
                          "Sim68K 0.0");  // version string
 
-    auto program_name = args["<program>"].asString();
     auto instructions = (long) -1;
     auto start = string("2000");
 
@@ -49,8 +48,18 @@ int main(int argc, const char** argv)
     if(checkopts("--start")) {
       start = args["--start"].asString();
     }
+
     try {
-      string program = shell::cat(program_name);
+
+      string program;
+
+      if(not checkopts("<program>")) {
+        program = shell::catin();
+      } else {
+        auto program_name = args["<program>"].asString();
+        program = shell::cat(program_name);
+      }
+
       if(checkopt("--json")) {
           string error;
           program = (json11::Json::parse(program, error))["object"].string_value();
