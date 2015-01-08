@@ -1,0 +1,12 @@
+	ORG $2000
+	ADD #1,D0
+	TST.W D0
+
+	BEQ FALSE   
+	ADD #3,D0
+	BRA ENDIF   
+FALSE:              
+	ADDI #7,D0	
+ENDIF:  
+	BREAK
+	 
