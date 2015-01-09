@@ -12,6 +12,10 @@ void printHex(int v, int n=8) {
 	cout << right << setfill(' ') << setw(n) << hex << v ;
 }
 
+void printString(string v, int n=8) {
+	cout << right << setfill(' ') << setw(n) << v ;
+}
+
 void printMnemonic(string s) {
 	cout << setfill(' ') << setw(16) << ' ';
 	cout << setfill(' ') << setw(32) << left << s ;
@@ -36,6 +40,12 @@ void printTrace(Json trace) {
 					d["before"].int_value(), 
 					d["after"].int_value());
 			}
+		}
+		for(const auto j: i["tracked"].array_items()) {
+			auto name=j["name"].string_value();
+			auto value=j["string"].string_value();
+			auto size=j["size"].int_value();
+			printString(value, size);
 		}
 		cout << endl;
 	}

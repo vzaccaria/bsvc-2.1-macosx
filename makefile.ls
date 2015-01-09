@@ -25,7 +25,7 @@ parse ->
                          @clang-pre 'sim68k-src/cpu/*.cxx', 'sim68k-src/cpu/*.hxx'
                          @clang-pre 'sim68k-src/devices/*.cxx'
                          @clang-pre 'sim68k-src/loader/*.cxx'
-                         @clang-pre 'sim68k-src/src/*.cxx'
+                         @clang-pre 'sim68k-src/src/*.cxx', 'sim68k-src/src/*.hxx'
                          @clang-pre 'sim68k-src/Framework/*.cxx', 'sim68k-src/Framework/*.hxx'
                          ]
 

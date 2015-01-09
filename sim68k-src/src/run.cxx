@@ -7,6 +7,7 @@
 #include <map>
 #include "lib/debug.hxx"
 #include "lib/underscore.hxx"
+#include "track.hxx"
 
 auto debug = Debug("run");
 
@@ -137,9 +138,11 @@ Json run(string program, long instructions, bool json, string start_address, str
 	do {
 		auto val = execInstruction();
 		auto regs = getRegisters();
+		auto trackedValues = getTracked(processor, track);
 		inst.push_back(Json::object {
 			{ "instruction", val }, 
-			{ "delta", diff(prev, regs) }
+			{ "delta", diff(prev, regs) },
+			{ "tracked", trackedValues }
 		});
 		prev = regs;
 		n = n + 1;
