@@ -28,10 +28,7 @@ auto registry = new DeviceRegistry;
 
 BasicDevice *ram;
 
-void setupSimulation() {
-	registry->Create("RAM", "BaseAddress = 0 Size = 20000", (*processor), ram);
-	processor->addressSpace(0).AttachDevice(ram);
-}
+
 
 
 
@@ -60,6 +57,27 @@ Json diff(Json j1, Json j2) {
 }
 
 #define FLAG(V, FNAME) ((int) (V & processor->FNAME) ? 1 : 0)
+
+map<string, int> regPositions;
+
+void storeRegPositions() {
+	for(auto t: range(0, (processor->myNumberOfRegisters) - 1)) {
+		auto pname = processor->ourRegisterData[t].name;
+		regPositions[pname] = t;
+	}
+}
+
+unsigned int getRegValue(string name) {
+	if(name != string("SR")) {
+		if(!regPositions.count(name)) {
+			throw "Non existing register " + name;
+		} else {
+			return processor->register_value[regPositions[name]];
+		}
+	} else {
+		return 0;
+	}
+}
 
 Json getRegisters() {
 	vector<Json> regs;
@@ -151,4 +169,11 @@ Json run(string program, long instructions, bool json, string start_address) {
 	} while(continuate);
 
 	return Json::array(inst);
+}
+
+
+void setupSimulation() {
+	registry->Create("RAM", "BaseAddress = 0 Size = 20000", (*processor), ram);
+	processor->addressSpace(0).AttachDevice(ram);
+	storeRegPositions();
 }

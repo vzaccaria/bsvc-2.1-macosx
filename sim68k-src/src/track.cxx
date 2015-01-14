@@ -10,7 +10,8 @@
 #include <string>
 #include <iomanip>
 #include "format.h"
-
+#include "run.hxx"
+#include <set>
 
 using namespace json11;
 using namespace std;
@@ -90,22 +91,39 @@ string getSymValue(m68000 *processor, unsigned long address, int size) {
     return res;
 }
 
+
+set<string> architectureState = {   "N", "V", "X", "Z", 
+                                    "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", 
+                                    "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7" 
+                                    }; 
+
 Json getTracked(m68000 *processor){
 
     vector<Json> res;
     for(auto t: tracked) {
         auto name = t.first;
-        auto address = symbols[name].int_value();
-        auto size = t.second["size"].int_value();
-        auto value = getSymValue(processor, address, size);
+        if(architectureState.count(name)) {
+            auto value = getRegValue(name);
+            auto size = 32;
+            res.push_back(Json::object {
+                { "name", name },
+                { "size", size },
+                { "string", fmt::format("{0:8x}", value) }
+            });      
+        } else {
+            auto address = symbols[name].int_value();
+            auto size = t.second["size"].int_value();
+            auto value = getSymValue(processor, address, size);
 
-        res.push_back(Json::object {
-            { "name", name },
-            { "address", address },
-            { "addressHex", fmt::format("{0:x}", address)},
-            { "size", size },
-            { "string", value }
-        });
+            res.push_back(Json::object {
+                { "name", name },
+                { "address", address },
+                { "addressHex", fmt::format("{0:x}", address)},
+                { "size", size },
+                { "string", value }
+            });            
+        }
+
     }
 
     return res;

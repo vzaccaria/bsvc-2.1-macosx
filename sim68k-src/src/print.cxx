@@ -16,6 +16,10 @@ void printString(string v, int n=8) {
 	cout << right << setfill(' ') << setw(n) << v ;
 }
 
+void space() {
+	cout << "  ";
+}
+
 void printMnemonic(string s) {
 	cout << setfill(' ') << setw(16) << ' ';
 	cout << setfill(' ') << setw(32) << left << s ;
@@ -52,6 +56,7 @@ void printTrace(Json trace, bool tracked) {
 					auto value=j["string"].string_value();
 					auto size=j["size"].int_value();
 					printString(value, size/8);
+					space();
 				}
 		}
 
