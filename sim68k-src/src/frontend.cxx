@@ -41,6 +41,7 @@ int main(int argc, const char** argv)
     auto instructions = (long) -1;
     auto start = string("2000");
     auto track = string("");
+    bool shouldTrack = false;
 
     if(checkopts("--num_inst")) {
       instructions = stol(args["--num_inst"].asString());
@@ -54,6 +55,7 @@ int main(int argc, const char** argv)
 
     if(checkopts("--track")) {
       track = args["--track"].asString();
+      shouldTrack = true;
     }
 
     try {
@@ -77,7 +79,7 @@ int main(int argc, const char** argv)
 
       setupSimulation(); 
       auto res = run(program, instructions, true, start);
-      printTrace(res);
+      printTrace(res, shouldTrack);
     }
     catch(char const *e) {
       cout << "Exception: " << e << '\n';

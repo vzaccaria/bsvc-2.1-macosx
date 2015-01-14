@@ -29,24 +29,32 @@ void printDelta(string name, int v1, int v2) {
 
 }
 
-void printTrace(Json trace) {
+void printTrace(Json trace, bool tracked) {
 	for(const auto i: trace.array_items()) {
+
 		printHex(i["instruction"]["pc"].int_value());
+
 		printMnemonic(i["instruction"]["mnemonic"].string_value());
-		for(const auto x: i["delta"].array_items()) {
-			auto d = x["register"];
-			if(d["name"].string_value() != "PC") {
-				printDelta(d["name"].string_value(), 
-					d["before"].int_value(), 
-					d["after"].int_value());
-			}
+
+		if(!tracked) {
+				for(const auto x: i["delta"].array_items()) {
+					auto d = x["register"];
+					if(d["name"].string_value() != "PC") {
+						printDelta(d["name"].string_value(), 
+							d["before"].int_value(), 
+							d["after"].int_value());
+					}
+				}
+		} else {
+		
+				for(const auto j: i["tracked"].array_items()) {
+					auto name=j["name"].string_value();
+					auto value=j["string"].string_value();
+					auto size=j["size"].int_value();
+					printString(value, size/8);
+				}
 		}
-		for(const auto j: i["tracked"].array_items()) {
-			auto name=j["name"].string_value();
-			auto value=j["string"].string_value();
-			auto size=j["size"].int_value();
-			printString(value, size);
-		}
+
 		cout << endl;
 	}
 }

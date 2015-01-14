@@ -11,7 +11,7 @@ parse ->
         @reduce-files( ("clang $^  -o $@"), "linkedc", "x", files)
 
     @add-plugin 'clangPre',(g, deps) ->
-        @compile-files( (-> "clang++ -c -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
+        @compile-files( (-> "clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
 
     @add-plugin 'link', (files) ->
         @reduce-files( ("clang++ $^  -o $@"), "linked", "x", files)
@@ -27,6 +27,7 @@ parse ->
                          @clang-pre 'sim68k-src/loader/*.cxx'
                          @clang-pre 'sim68k-src/src/*.cxx', 'sim68k-src/src/*.hxx'
                          @clang-pre 'sim68k-src/Framework/*.cxx', 'sim68k-src/Framework/*.hxx'
+                         @clang-pre 'sim68k-src/lib/cppformat/format.cc'
                          ]
 
         @dest "./bin/asm68k", -> 
@@ -42,7 +43,7 @@ parse ->
         @command-seq -> [
             @make "build"
             @cmd "DEBUG_COLORS=no DEBUG=* ./test/test.sh"
-            @cmd "./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"D0.L,Z.b,SUM.1W\""
+            @cmd "./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"SUM.2L\""
             ]
 
     @collect "clean", -> [

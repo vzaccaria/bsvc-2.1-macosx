@@ -8,10 +8,13 @@
 #include "lib/underscore.hxx"
 #include "track.hxx"
 #include <string>
+#include <iomanip>
+#include "format.h"
 
 
 using namespace json11;
 using namespace std;
+using namespace fmt;
 
 Json symbols;
 map<string, Json> tracked;
@@ -51,7 +54,7 @@ int specSize(string s, string name) {
 void addTracked(string s) {
     /* #include <regex> */
     /* using namespace std; */
-    regex re("(\\w+)\\.?(\\d)*(\\w)*");
+    regex re("(\\w+)\\.?(\\d*)(\\w*)");
     smatch m; 
     if(regex_match(s, m, re)) {
         if(m.size()>2) {
@@ -70,30 +73,40 @@ void addTracked(string s) {
     }
 }
 
-Json getTitle(string track) {
-
-}
-
 void initTracked(string track) {
     for(auto s: _s::words(track, ",")) {
         addTracked(s);
     }
 }
 
+string getSymValue(m68000 *processor, unsigned long address, int size) {
+    string res = "";
+    auto & as = processor->addressSpace(0);
+    for(int ss=0; ss<size; ss +=8) {
+       unsigned long dta;
+       as.Peek(address+(ss/8), dta, BYTE);
+       res = res + format("{0:0<2x} ", dta);
+    }
+    return res;
+}
+
 Json getTracked(m68000 *processor){
 
-    /* Returns array of tuples:
-        { "name": "name of symbol", "size": numeric_size_in_chars, "string": "string representation" }
-     */
-	vector<Json> res;
-    // if (track != "")
-    // {
-    //     res.push_back(Json::object
-    //     {
-    //         { "name", "PIPPO" },
-    //         { "size", 4 },
-    //         { "string", "ABCD"}
-    //     });
-    // }
+    vector<Json> res;
+    for(auto t: tracked) {
+        auto name = t.first;
+        auto address = symbols[name].int_value();
+        auto size = t.second["size"].int_value();
+        auto value = getSymValue(processor, address, size);
+
+        res.push_back(Json::object {
+            { "name", name },
+            { "address", address },
+            { "addressHex", fmt::format("{0:x}", address)},
+            { "size", size },
+            { "string", value }
+        });
+    }
+
     return res;
 }
