@@ -5,6 +5,7 @@
 #include <iostream>
 #include "src/print.hxx"
 #include <sstream>
+#include "track.hxx"
 
 static const char USAGE[] =
 R"(sim68k.
@@ -68,11 +69,14 @@ int main(int argc, const char** argv)
 
       if(checkopt("--json")) {
           string error;
-          program = (json11::Json::parse(program, error))["object"].string_value();
+          auto complete = json11::Json::parse(program, error);
+          program = complete["object"].string_value();
+          addSymbols(complete["sym"]);
+          initTracked(track);
       }
 
       setupSimulation(); 
-      auto res = run(program, instructions, true, start, track);
+      auto res = run(program, instructions, true, start);
       printTrace(res);
     }
     catch(char const *e) {

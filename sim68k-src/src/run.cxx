@@ -118,7 +118,7 @@ Json execInstruction() {
 	};
 }
 
-Json run(string program, long instructions, bool json, string start_address, string track="") {
+Json run(string program, long instructions, bool json, string start_address) {
 	vector<Json> inst;
 	int n = 0;
 
@@ -128,8 +128,6 @@ Json run(string program, long instructions, bool json, string start_address, str
 		throw "Error loading file";
 	}
 
-	debugm("Tracking " + track);
-
 	processor->Reset();
 	processor->SetRegister("PC", start_address);
 
@@ -138,7 +136,7 @@ Json run(string program, long instructions, bool json, string start_address, str
 	do {
 		auto val = execInstruction();
 		auto regs = getRegisters();
-		auto trackedValues = getTracked(processor, track);
+		auto trackedValues = getTracked(processor);
 		inst.push_back(Json::object {
 			{ "instruction", val }, 
 			{ "delta", diff(prev, regs) },
