@@ -94,9 +94,9 @@ string getSymValue(m68000 *processor, unsigned long address, int size) {
        unsigned long dta;
        as.Peek(address+(ss/8), dta, BYTE);
        if(dta > 0) {
-            res = res + format("{0:.<2x} ", dta);
+            res = res + format("{0:0>2x} ", dta);
        } else {
-            res = res + format("{0:.<2} ", "");
+            res = res + format("{0:<2} ", "");
        }
     }
     return res;
