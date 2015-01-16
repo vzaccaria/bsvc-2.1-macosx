@@ -25,10 +25,25 @@ THE SOFTWARE.
 
 /* import dropbox json11 */
 #include "json11.hpp"
+#include <regex>
 
 
 namespace _s {
+
 	using namespace std;
+
+	static string regex1(string str, string rexp) {
+		/* #include <regex> */
+		/* using namespace std; */
+		std::regex re_str(rexp, std::regex_constants::ECMAScript | std::regex_constants::icase);
+		std::smatch m_str; 
+		if(std::regex_match(str, m_str, re_str)) {
+			if(m_str.size() > 1) {
+				return m_str[1];
+			}
+		} 
+		return "";
+	}
 
 	static vector<string> words(string str, string delim = " ") {
 		vector<string> res;

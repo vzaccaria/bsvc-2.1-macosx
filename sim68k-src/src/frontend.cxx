@@ -43,6 +43,7 @@ int main(int argc, const char** argv)
     auto track = string("");
     bool shouldTrack = false;
 
+    
     if(checkopts("--num_inst")) {
       instructions = stol(args["--num_inst"].asString());
     } else {
@@ -86,6 +87,12 @@ int main(int argc, const char** argv)
       cout << "Aborting" << '\n';
       exit(1);
     }
+    catch(string &e) {
+      cout << "Exception: " << e << '\n';
+      cout << "Aborting" << '\n';
+      exit(1);     
+    }
+
 
 
     return 0;

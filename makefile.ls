@@ -25,7 +25,7 @@ parse ->
                          @clang-pre 'sim68k-src/cpu/*.cxx', 'sim68k-src/cpu/*.hxx'
                          @clang-pre 'sim68k-src/devices/*.cxx'
                          @clang-pre 'sim68k-src/loader/*.cxx'
-                         @clang-pre 'sim68k-src/src/*.cxx', 'sim68k-src/src/*.hxx'
+                         @clang-pre 'sim68k-src/src/*.cxx', 'sim68k-src/**/*.hxx'
                          @clang-pre 'sim68k-src/Framework/*.cxx', 'sim68k-src/Framework/*.hxx'
                          @clang-pre 'sim68k-src/lib/cppformat/format.cc'
                          ]
@@ -43,7 +43,7 @@ parse ->
         @command-seq -> [
             @make "build"
             @cmd "DEBUG_COLORS=no DEBUG=* ./test/test.sh"
-            @cmd "./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"D0,SUM.2L\""
+            @cmd "./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"SR:Z,D0,SUM.2L\""
             ]
 
     @collect "clean", -> [

@@ -18,7 +18,7 @@ using namespace std;
 using namespace fmt;
 
 Json symbols;
-map<string, Json> tracked;
+vector<Json> tracked;
 
 void addSymbols(Json sym) {
     symbols = sym;
@@ -52,10 +52,11 @@ int specSize(string s, string name) {
     }
 }
 
+
 void addTracked(string s) {
     /* #include <regex> */
     /* using namespace std; */
-    regex re("(\\w+)\\.?(\\d*)(\\w*)");
+    regex re("([\\:\\w]+)\\.?(\\d*)(\\w*)");
     smatch m; 
     if(regex_match(s, m, re)) {
         if(m.size()>2) {
@@ -65,19 +66,25 @@ void addTracked(string s) {
                 num = stol(m[2].str());
             }
             auto spec = m[3].str();            
-            tracked[name] = Json::object {
+            tracked.push_back(Json::object {
                { "name", name },
                { "size",  (int) (specSize(spec, name) * num) }
-            };
-            cout << tracked[name].dump() << endl;
+            });
         }
+    } else {
+        throw ("Invalid format specifier for " + s).c_str();
     }
 }
+
+set<string> architectureState;
 
 void initTracked(string track) {
     for(auto s: _s::words(track, ",")) {
         addTracked(s);
     }
+    architectureState = { "SR:N", "SR:V", "SR:X", "SR:Z", "PC",
+                          "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", 
+                          "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7"};
 }
 
 string getSymValue(m68000 *processor, unsigned long address, int size) {
@@ -86,45 +93,66 @@ string getSymValue(m68000 *processor, unsigned long address, int size) {
     for(int ss=0; ss<size; ss +=8) {
        unsigned long dta;
        as.Peek(address+(ss/8), dta, BYTE);
-       res = res + format("{0:0<2x} ", dta);
+       if(dta > 0) {
+            res = res + format("{0:.<2x} ", dta);
+       } else {
+            res = res + format("{0:.<2} ", "");
+       }
     }
     return res;
 }
 
-
-set<string> architectureState = {   "N", "V", "X", "Z", 
-                                    "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", 
-                                    "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7" 
-                                    }; 
-
 Json getTracked(m68000 *processor){
+    static bool first = true;
 
     vector<Json> res;
     for(auto t: tracked) {
-        auto name = t.first;
+        auto name = t["name"].string_value();
+
         if(architectureState.count(name)) {
+
             auto value = getRegValue(name);
-            auto size = 32;
+
+            auto size = lambda() {
+                if(_s::regex1(name, "(SR:.)") != "") 
+                    return 1;
+                else 
+                    return 32;
+            }();
+
+            string sval;
+
+            sval = lambda() {
+                    if(first  && (size == 1))  return fmt::format("{0:>4}"  , name);
+                    if(first  && (size > 1 ))  return fmt::format("{0:>8}"  , name);
+                    if(!first && (size == 1))  return fmt::format("{0:>4x}" , value);
+                    return fmt::format("{0:8x}" , value);
+                }();
             res.push_back(Json::object {
-                { "name", name },
-                { "size", size },
-                { "string", fmt::format("{0:8x}", value) }
-            });      
-        } else {
+                    { "name", name },
+                    { "size", size },
+                    { "string", sval } });
+       } else {
             auto address = symbols[name].int_value();
-            auto size = t.second["size"].int_value();
+            auto size = t["size"].int_value();
             auto value = getSymValue(processor, address, size);
+
+            auto sval = lambda() {
+                auto fs = "{:<" + to_string(size/8 * 3) + "}"; /* See upper function */
+                if(first) return fmt::format(fs, name);
+                return fmt::format("{}", value);
+            } ();
 
             res.push_back(Json::object {
                 { "name", name },
                 { "address", address },
                 { "addressHex", fmt::format("{0:x}", address)},
                 { "size", size },
-                { "string", value }
+                { "string", sval }
             });            
         }
 
     }
-
+    first = false;
     return res;
 }

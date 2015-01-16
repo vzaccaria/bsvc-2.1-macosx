@@ -30,16 +30,16 @@
 .build/10-Loader.o: sim68k-src/loader/Loader.cxx
 	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/loader/Loader.cxx -o .build/10-Loader.o
 
-.build/11-frontend.o: sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/frontend.cxx
+.build/11-frontend.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/frontend.cxx
 	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/frontend.cxx -o .build/11-frontend.o
 
-.build/12-print.o: sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/print.cxx
+.build/12-print.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/print.cxx
 	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/print.cxx -o .build/12-print.o
 
-.build/13-run.o: sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/run.cxx
+.build/13-run.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/run.cxx
 	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/run.cxx -o .build/13-run.o
 
-.build/14-track.o: sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/track.cxx
+.build/14-track.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/track.cxx
 	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/track.cxx -o .build/14-track.o
 
 .build/15-AddressSpace.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/AddressSpace.cxx
@@ -163,7 +163,7 @@ cmd-48:
 
 .PHONY : cmd-49
 cmd-49: 
-	./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t "D0,SUM.2L"
+	./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t "SR:Z,D0,SUM.2L"
 
 .PHONY : cmd-seq-50
 cmd-seq-50: 

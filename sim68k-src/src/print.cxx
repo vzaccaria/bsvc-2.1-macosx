@@ -33,11 +33,12 @@ void printDelta(string name, int v1, int v2) {
 
 }
 
+
+
 void printTrace(Json trace, bool tracked) {
+
 	for(const auto i: trace.array_items()) {
-
 		printHex(i["instruction"]["pc"].int_value());
-
 		printMnemonic(i["instruction"]["mnemonic"].string_value());
 
 		if(!tracked) {
