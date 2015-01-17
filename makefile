@@ -1,82 +1,82 @@
 .DEFAULT_GOAL := all
 
 .build/1-docopt.o: sim68k-src/lib/docopt/docopt.cpp
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/docopt/docopt.cpp -o .build/1-docopt.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/docopt/docopt.cpp -o .build/1-docopt.o
 
 .build/2-json11.o: sim68k-src/lib/json11/json11.cpp
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/json11/json11.cpp -o .build/2-json11.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/json11/json11.cpp -o .build/2-json11.o
 
 .build/3-decode.o: sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/cpu/decode.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/cpu/decode.cxx -o .build/3-decode.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/cpu/decode.cxx -o .build/3-decode.o
 
 .build/4-exec.o: sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/cpu/exec.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/cpu/exec.cxx -o .build/4-exec.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/cpu/exec.cxx -o .build/4-exec.o
 
 .build/5-m68000.o: sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/cpu/m68000.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/cpu/m68000.cxx -o .build/5-m68000.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/cpu/m68000.cxx -o .build/5-m68000.o
 
 .build/6-DeviceRegistry.o: sim68k-src/devices/DeviceRegistry.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/DeviceRegistry.cxx -o .build/6-DeviceRegistry.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/DeviceRegistry.cxx -o .build/6-DeviceRegistry.o
 
 .build/7-M68681.o: sim68k-src/devices/M68681.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/M68681.cxx -o .build/7-M68681.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/M68681.cxx -o .build/7-M68681.o
 
 .build/8-RAM.o: sim68k-src/devices/RAM.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/RAM.cxx -o .build/8-RAM.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/RAM.cxx -o .build/8-RAM.o
 
 .build/9-Timer.o: sim68k-src/devices/Timer.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/Timer.cxx -o .build/9-Timer.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/devices/Timer.cxx -o .build/9-Timer.o
 
 .build/10-Loader.o: sim68k-src/loader/Loader.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/loader/Loader.cxx -o .build/10-Loader.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/loader/Loader.cxx -o .build/10-Loader.o
 
 .build/11-frontend.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/frontend.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/frontend.cxx -o .build/11-frontend.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/frontend.cxx -o .build/11-frontend.o
 
 .build/12-print.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/print.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/print.cxx -o .build/12-print.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/print.cxx -o .build/12-print.o
 
 .build/13-run.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/run.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/run.cxx -o .build/13-run.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/run.cxx -o .build/13-run.o
 
 .build/14-track.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/cpu/m68000.hxx sim68k-src/cpu/m68000DecodeTable.hxx sim68k-src/devices/DeviceRegistry.hxx sim68k-src/devices/M68681.hxx sim68k-src/devices/RAM.hxx sim68k-src/devices/Timer.hxx sim68k-src/lib/debug.hxx sim68k-src/lib/shell.hxx sim68k-src/lib/underscore.hxx sim68k-src/loader/Loader.hxx sim68k-src/src/print.hxx sim68k-src/src/run.hxx sim68k-src/src/track.hxx sim68k-src/src/track.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/track.cxx -o .build/14-track.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/src/track.cxx -o .build/14-track.o
 
 .build/15-AddressSpace.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/AddressSpace.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/AddressSpace.cxx -o .build/15-AddressSpace.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/AddressSpace.cxx -o .build/15-AddressSpace.o
 
 .build/16-BasicCPU.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/BasicCPU.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BasicCPU.cxx -o .build/16-BasicCPU.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BasicCPU.cxx -o .build/16-BasicCPU.o
 
 .build/17-BasicDevice.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/BasicDevice.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BasicDevice.cxx -o .build/17-BasicDevice.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BasicDevice.cxx -o .build/17-BasicDevice.o
 
 .build/18-BasicDeviceRegistry.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/BasicDeviceRegistry.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BasicDeviceRegistry.cxx -o .build/18-BasicDeviceRegistry.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BasicDeviceRegistry.cxx -o .build/18-BasicDeviceRegistry.o
 
 .build/19-BreakpointList.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/BreakpointList.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BreakpointList.cxx -o .build/19-BreakpointList.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/BreakpointList.cxx -o .build/19-BreakpointList.o
 
 .build/20-Event.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/Event.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Event.cxx -o .build/20-Event.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Event.cxx -o .build/20-Event.o
 
 .build/21-Interface.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/Interface.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Interface.cxx -o .build/21-Interface.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Interface.cxx -o .build/21-Interface.o
 
 .build/22-RegInfo.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/RegInfo.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/RegInfo.cxx -o .build/22-RegInfo.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/RegInfo.cxx -o .build/22-RegInfo.o
 
 .build/23-StatInfo.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/StatInfo.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/StatInfo.cxx -o .build/23-StatInfo.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/StatInfo.cxx -o .build/23-StatInfo.o
 
 .build/24-Time.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/Time.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Time.cxx -o .build/24-Time.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Time.cxx -o .build/24-Time.o
 
 .build/25-Tools.o: sim68k-src/Framework/AddressSpace.hxx sim68k-src/Framework/BasicCPU.hxx sim68k-src/Framework/BasicDevice.hxx sim68k-src/Framework/BasicDeviceRegistry.hxx sim68k-src/Framework/BasicLoader.hxx sim68k-src/Framework/BreakpointList.hxx sim68k-src/Framework/Event.hxx sim68k-src/Framework/Interface.hxx sim68k-src/Framework/RegInfo.hxx sim68k-src/Framework/StatInfo.hxx sim68k-src/Framework/Time.hxx sim68k-src/Framework/Tools.hxx sim68k-src/Framework/Tools.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Tools.cxx -o .build/25-Tools.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/Framework/Tools.cxx -o .build/25-Tools.o
 
 .build/26-format.o: sim68k-src/lib/cppformat/format.cc
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/cppformat/format.cc -o .build/26-format.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/cppformat/format.cc -o .build/26-format.o
 
 .build/linked0.x: .build/1-docopt.o .build/2-json11.o .build/3-decode.o .build/4-exec.o .build/5-m68000.o .build/6-DeviceRegistry.o .build/7-M68681.o .build/8-RAM.o .build/9-Timer.o .build/10-Loader.o .build/11-frontend.o .build/12-print.o .build/13-run.o .build/14-track.o .build/15-AddressSpace.o .build/16-BasicCPU.o .build/17-BasicDevice.o .build/18-BasicDeviceRegistry.o .build/19-BreakpointList.o .build/20-Event.o .build/21-Interface.o .build/22-RegInfo.o .build/23-StatInfo.o .build/24-Time.o .build/25-Tools.o .build/26-format.o
 	clang++ $^  -o $@
@@ -133,16 +133,16 @@
 	clang   -c asm68k-src/symbol.c -o .build/42-symbol.o
 
 .build/43-driver.o: asm68k-src/driver.hxx sim68k-src/lib/docopt/docopt.h sim68k-src/lib/docopt/docopt_private.h sim68k-src/lib/docopt/docopt_util.h sim68k-src/lib/docopt/docopt_value.h sim68k-src/lib/json11/json11.hpp asm68k-src/driver.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ asm68k-src/driver.cxx -o .build/43-driver.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ asm68k-src/driver.cxx -o .build/43-driver.o
 
 .build/44-main.o: asm68k-src/driver.hxx sim68k-src/lib/docopt/docopt.h sim68k-src/lib/docopt/docopt_private.h sim68k-src/lib/docopt/docopt_util.h sim68k-src/lib/docopt/docopt_value.h sim68k-src/lib/json11/json11.hpp asm68k-src/main.cxx
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ asm68k-src/main.cxx -o .build/44-main.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ asm68k-src/main.cxx -o .build/44-main.o
 
 .build/45-docopt.o: sim68k-src/lib/docopt/docopt.h sim68k-src/lib/docopt/docopt_private.h sim68k-src/lib/docopt/docopt_util.h sim68k-src/lib/docopt/docopt_value.h sim68k-src/lib/docopt/docopt.cpp
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/docopt/docopt.cpp -o .build/45-docopt.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/docopt/docopt.cpp -o .build/45-docopt.o
 
 .build/46-json11.o: sim68k-src/lib/json11/json11.hpp sim68k-src/lib/json11/json11.cpp
-	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/json11/json11.cpp -o .build/46-json11.o
+	clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ sim68k-src/lib/json11/json11.cpp -o .build/46-json11.o
 
 .build/linked27.x: .build/28-assemble.o .build/29-build.o .build/30-codegen.o .build/31-directive.o .build/32-error.o .build/33-eval.o .build/34-globals.o .build/35-include.o .build/36-instlookup.o .build/37-insttable.o .build/38-listing.o .build/39-movem.o .build/40-object.o .build/41-opparse.o .build/42-symbol.o .build/43-driver.o .build/44-main.o .build/45-docopt.o .build/46-json11.o
 	clang++ $^  -o $@

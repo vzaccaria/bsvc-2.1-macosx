@@ -2,19 +2,22 @@
 
 { parse, add-plugin } = require('newmake')
 
+cCompiler = "clang"
+cppCompiler = "clang++"
+
 parse ->
 
     @add-plugin 'gcc', (g, deps) ->
-        @compile-files( (-> "clang   -c #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps)
+        @compile-files( (-> "#cCompiler   -c #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps)
 
     @add-plugin 'gccLink', (files) ->
-        @reduce-files( ("clang $^  -o $@"), "linkedc", "x", files)
+        @reduce-files( ("#cCompiler $^  -o $@"), "linkedc", "x", files)
 
     @add-plugin 'clangPre',(g, deps) ->
-        @compile-files( (-> "clang++ -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt --std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
+        @compile-files( (-> "#cppCompiler -c -Isim68k-src/lib/cppformat -Isim68k-src/lib -Isim68k-src/lib/json11 -Isim68k-src -Isim68k-src/Framework -Isim68k-src/lib/docopt -std=c++11 -DUSE_STD --stdlib=libc++ #{it.orig-complete} -o #{it.build-target}"), ".o", g, deps )
 
     @add-plugin 'link', (files) ->
-        @reduce-files( ("clang++ $^  -o $@"), "linked", "x", files)
+        @reduce-files( ("#cppCompiler $^  -o $@"), "linked", "x", files)
 
     @collect "build", -> [
 
