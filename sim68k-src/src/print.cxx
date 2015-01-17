@@ -34,12 +34,22 @@ void printDelta(string name, int v1, int v2) {
 }
 
 
+string compactMnemonic(string s) {
+	/* #include <regex> */
+	/* using namespace std; */
+	s = regex_replace(s, regex("A5 A4 A3 A2 A1 A0 D7 D6 D5 D4 D3 D2 D1 D0"), "A0-A6/D0-D7");
+	s = regex_replace(s, regex("D0 D1 D2 D3 D4 D5 D6 D7 A0 A1 A2 A3 A4 A5"), "D0-D7/A0-A6");
+	return s;
+
+}
+
+
 
 void printTrace(Json trace, bool tracked) {
 
 	for(const auto i: trace.array_items()) {
 		printHex(i["instruction"]["pc"].int_value());
-		printMnemonic(i["instruction"]["mnemonic"].string_value());
+		printMnemonic(compactMnemonic(i["instruction"]["mnemonic"].string_value()));
 
 		if(!tracked) {
 				for(const auto x: i["delta"].array_items()) {

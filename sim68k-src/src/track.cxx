@@ -56,7 +56,7 @@ int specSize(string s, string name) {
 void addTracked(string s) {
     /* #include <regex> */
     /* using namespace std; */
-    regex re("([\\:\\w]+)\\.?(\\d*)(\\w*)");
+    regex re("([\\:\\w']+)\\.?(\\d*)(\\w*)");
     smatch m; 
     if(regex_match(s, m, re)) {
         if(m.size()>2) {
@@ -72,7 +72,7 @@ void addTracked(string s) {
             });
         }
     } else {
-        throw ("Invalid format specifier for " + s).c_str();
+        throw ("Invalid format specifier for " + s);
     }
 }
 
@@ -84,7 +84,7 @@ void initTracked(string track) {
     }
     architectureState = { "SR:N", "SR:V", "SR:X", "SR:Z", "PC",
                           "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", 
-                          "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7"};
+                          "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A7'"};
 }
 
 string getSymValue(m68000 *processor, unsigned long address, int size) {

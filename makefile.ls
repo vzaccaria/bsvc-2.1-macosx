@@ -46,7 +46,7 @@ parse ->
         @command-seq -> [
             @make "build"
             @cmd "DEBUG_COLORS=no DEBUG=* ./test/test.sh"
-            @cmd "./bin/asm68k ./examples/example.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"SR:Z,D0,SUM.2L\""
+            @cmd "./bin/asm68k ./test/base/test1/test.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"SR:Z,D0,A7',SUM.2L\""
             ]
 
     @collect "clean", -> [
