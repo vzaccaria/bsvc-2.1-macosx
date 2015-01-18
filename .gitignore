@@ -19,3 +19,5 @@ test/base/test1/test.txt
 x.h68
 x.lis
 examples/example.json
+sim68k-src/lib/cppformat-0.12.0.zip
+setup-em.sh

@@ -5,21 +5,23 @@
 #include <iostream>
 #include "src/print.hxx"
 #include <sstream>
+#include "track.hxx"
 
 static const char USAGE[] =
 R"(sim68k.
 
     Usage:
-      sim68k [ <program> ] [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR] 
+      sim68k [ <program> ] [ -j | --json ] [ -n N | --num_inst N ] [ -s ADDR | --start ADDR ] [ -t TRACK | --track TRACK ]
       sim68k (-h | --help)
       sim68k(-v | --version)
 
     Options:
-      -j, --json              Inputfile is Json
-      -n N, --num_inst N      Number of instructions to execute 
-      -s ADDR, --start ADDR   Specify hex start address (default is 2000)
-      -h --help               Show this screen.
-      -v --version            Program version
+      -j, --json                  Inputfile is Json
+      -t TRACK, --track TRACK     List of regs, status bits, and symbols to track
+      -n N, --num_inst N          Number of instructions to execute 
+      -s ADDR, --start ADDR       Specify hex start address (default is 2000)
+      -h --help                   Show this screen.
+      -v --version                Program version
 
 )";
 
@@ -38,7 +40,10 @@ int main(int argc, const char** argv)
 
     auto instructions = (long) -1;
     auto start = string("2000");
+    auto track = string("");
+    bool shouldTrack = false;
 
+    
     if(checkopts("--num_inst")) {
       instructions = stol(args["--num_inst"].asString());
     } else {
@@ -47,6 +52,11 @@ int main(int argc, const char** argv)
 
     if(checkopts("--start")) {
       start = args["--start"].asString();
+    }
+
+    if(checkopts("--track")) {
+      track = args["--track"].asString();
+      shouldTrack = true;
     }
 
     try {
@@ -62,24 +72,28 @@ int main(int argc, const char** argv)
 
       if(checkopt("--json")) {
           string error;
-          program = (json11::Json::parse(program, error))["object"].string_value();
+          auto complete = json11::Json::parse(program, error);
+          program = complete["object"].string_value();
+          addSymbols(complete["sym"]);
+          initTracked(track);
       }
 
       setupSimulation(); 
       auto res = run(program, instructions, true, start);
-      printTrace(res);
+      printTrace(res, shouldTrack);
     }
     catch(char const *e) {
       cout << "Exception: " << e << '\n';
       cout << "Aborting" << '\n';
       exit(1);
     }
+    catch(string &e) {
+      cout << "Exception: " << e << '\n';
+      cout << "Aborting" << '\n';
+      exit(1);     
+    }
 
 
-    // if(args["--json"].asBool()) {
-    //     cout << "Seems json was called" << "\n";
-    // }
-    // cout << program_name;
 
     return 0;
 }

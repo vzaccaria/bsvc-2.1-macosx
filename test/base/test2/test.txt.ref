@@ -1,3 +1,4 @@
+       0                instructions                    
     2000                ADDQ.W #$1,D0                     D0: 0 ->  1
     2002                TST.W D0                        
     2004                BEQ.W $0008                     

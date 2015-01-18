@@ -7,8 +7,8 @@
 #include <map>
 #include "lib/debug.hxx"
 #include "lib/underscore.hxx"
-
-auto debug = Debug("run");
+#include "format.h"
+#include "track.hxx"
 
 using namespace std;
 
@@ -26,12 +26,6 @@ auto loader = new Loader(*processor);
 auto registry = new DeviceRegistry;
 
 BasicDevice *ram;
-
-void setupSimulation() {
-	registry->Create("RAM", "BaseAddress = 0 Size = 20000", (*processor), ram);
-	processor->addressSpace(0).AttachDevice(ram);
-}
-
 
 
 Json diff(Json j1, Json j2) {
@@ -59,6 +53,42 @@ Json diff(Json j1, Json j2) {
 }
 
 #define FLAG(V, FNAME) ((int) (V & processor->FNAME) ? 1 : 0)
+
+map<string, int> regPositions;
+
+void storeRegPositions() {
+	for(auto t: range(0, (processor->myNumberOfRegisters) - 1)) {
+		auto pname = processor->ourRegisterData[t].name;
+		regPositions[pname] = t;
+		// debugm(fmt::format("Regpositions {0} {1:d}", pname, t));
+	}
+}
+
+auto debug = Debug("main");
+
+unsigned int getRegValue(string name) {
+	auto prefix = _s::regex1(name, "(SR).*");
+	if( prefix == "" ) {
+		if(!regPositions.count(name)) {
+			throw "Non existing register " + name;
+		} else {
+			return processor->register_value[regPositions[name]];
+		}
+	} else {
+		string n;
+		if((n = _s::regex1(name, "SR:(\\w+)")) != "") {
+			auto value = processor->register_value[regPositions["SR"]];
+			if(n == "C") return FLAG(value, C_FLAG);
+			if(n == "Z") return FLAG(value, Z_FLAG); 
+			if(n == "N") return FLAG(value, N_FLAG); 
+			if(n == "V") return FLAG(value, V_FLAG); 
+			throw "Invalid SR flag: " + n;
+		} else {
+			throw "Invalid register " + name;	
+		}
+		return 0;
+	}
+}
 
 Json getRegisters() {
 	vector<Json> regs;
@@ -131,13 +161,23 @@ Json run(string program, long instructions, bool json, string start_address) {
 	processor->SetRegister("PC", start_address);
 
 	auto prev = getRegisters();
+
+	inst.push_back(Json::object {
+		{ "instruction", Json::object {
+			{"mnemonic", "instructions" }, 
+			{"pc", 0 }
+		}},
+		{ "tracked", getTracked(processor) } /* This one gets the name of the variables */
+	});
 	bool continuate = true;
 	do {
 		auto val = execInstruction();
 		auto regs = getRegisters();
+		auto trackedValues = getTracked(processor);
 		inst.push_back(Json::object {
 			{ "instruction", val }, 
-			{ "delta", diff(prev, regs) }
+			{ "delta", diff(prev, regs) },
+			{ "tracked", trackedValues }
 		});
 		prev = regs;
 		n = n + 1;
@@ -148,4 +188,11 @@ Json run(string program, long instructions, bool json, string start_address) {
 	} while(continuate);
 
 	return Json::array(inst);
+}
+
+
+void setupSimulation() {
+	registry->Create("RAM", "BaseAddress = 0 Size = 20000", (*processor), ram);
+	processor->addressSpace(0).AttachDevice(ram);
+	storeRegPositions();
 }
