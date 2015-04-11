@@ -1,15 +1,17 @@
-
-
-
 Introduction
 ============
-This is a port of the BSVC Motorola 68000 assembler and simulation framework to Mac OS X (Mavericks). The distribution was originally released by Bradford W. Mott in the nineties, while listening to Rick Astley I presume. 
 
+This is a port of the BSVC Motorola 68000 assembler and simulation
+framework to Mac OS X (Mavericks). The distribution was originally
+released by Bradford W. Mott in the nineties, while listening to Rick
+Astley I presume.
 
 Build the project
 =================
 
-```bash
+By using the shipped makefile:
+
+``` bash
 make all
 ```
 
@@ -18,19 +20,17 @@ Example usage
 
 To assemble an example (produces `examples/example.h68`):
 
-```bash
+``` bash
 ./bin/asm68k examples/example.s
 ```
 
-To execute the first 10 instructions from $2000:
+To execute the first 10 instructions from \$2000:
 
-```bash
+``` bash
 ./bin/sim68k examples/example.h68 --start 2000 -n 10
 ```
 
-Running tests
-=============
+Running tests locally
+=====================
 
-```
-./test/test.sh
-```
+    ./test/test.sh

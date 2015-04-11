@@ -1,4 +1,4 @@
-#!/usr/bin/env lsc 
+#!/usr/bin/env lsc
 
 { parse, add-plugin } = require('newmake')
 
@@ -33,7 +33,7 @@ parse ->
                          @clang-pre 'sim68k-src/lib/cppformat/format.cc'
                          ]
 
-        @dest "./bin/asm68k", -> 
+        @dest "./bin/asm68k", ->
             @link -> [
                 @gcc 'asm68k-src/*.c'                           , 'asm68k-src/*.h'
                 @clang-pre 'asm68k-src/*.cxx'                   , [ 'asm68k-src/*.hxx', 'sim68k-src/lib/docopt/*.h*', 'sim68k-src/lib/json11/*.h*' ]
@@ -41,7 +41,7 @@ parse ->
                 @clang-pre 'sim68k-src/lib/json11/json11.cpp'   , 'sim68k-src/lib/json11/*.h*'
                 ]
         ]
-        
+
     @collect "all", ->
         @command-seq -> [
             @make "build"
@@ -49,10 +49,21 @@ parse ->
             @cmd "./bin/asm68k ./test/base/test1/test.s -j | DEBUG_COLORS=no DEBUG=* ./bin/sim68k -j -t \"SR:Z,D0,A7',SUM.2L\""
             ]
 
+    @collect "test-linux-start", -> [
+      @cmd "cd _linux/_vagrant && vagrant up"
+      @cmd "ssh vagrant@192.168.33.10 'rm -rf /home/vagrant/bsvc'"
+    ]
+
+    @collect "quick-linux-test", -> [
+            @command-seq -> [
+              @cmd "rsync -rav -e ssh --exclude='node_modules' --exclude='.git' --exclude='*.o' . vagrant@192.168.33.10:/home/vagrant/bsvc"
+              @cmd "ssh vagrant@192.168.33.10  'cd /home/vagrant/bsvc && make clean && make'"
+              ]
+            ]
+
     @collect "clean", -> [
         @remove-all-targets()
         ]
 
-        # @dest "./bin/frontend", -> 
-        #         
-
+        # @dest "./bin/frontend", ->
+        #
