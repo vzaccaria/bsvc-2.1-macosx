@@ -12,6 +12,8 @@
 
   - file: path=/etc/apt/sources.list.d/clang.list state=absent
 
+  - apt: name=g++-4.6 force=yes state=absent
+  
   # Updates package list with the newest clang
   - shell: echo 'deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main' >> /etc/apt/sources.list.d/clang.list
   - shell: echo 'deb-src http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main' >> /etc/apt/sources.list.d/clang.list
