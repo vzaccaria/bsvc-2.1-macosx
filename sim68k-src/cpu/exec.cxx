@@ -3593,7 +3593,7 @@ int m68000::ExecuteMOVEQ(int opcode, string& trace_record, int trace)
   unsigned int data;
 
   // Get the destination data register number
-  register_number=D0_INDEX+(opcode & 0x0e00) >> 9;
+  register_number=(D0_INDEX+(opcode & 0x0e00)) >> 9;
 
   // Get the immediate data
   data=SignExtend((opcode & 0xff), BYTE);
