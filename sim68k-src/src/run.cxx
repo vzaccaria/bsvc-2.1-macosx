@@ -54,7 +54,7 @@ Json diff(Json j1, Json j2) {
 
 #define FLAG(V, FNAME) ((int) (V & processor->FNAME) ? 1 : 0)
 
-map<string, int> regPositions;
+std::map<string, int> regPositions;
 
 void storeRegPositions() {
 	for(auto t: range(0, (processor->myNumberOfRegisters) - 1)) {

@@ -96,25 +96,25 @@ class m68000 : public BasicCPU {
 
     // Array of static information for each register 
     RegisterData ourRegisterData[19] = {
-  {"D0",  0xffffffff,  "Data Register 0"},
-  {"D1",  0xffffffff,  "Data Register 1"},
-  {"D2",  0xffffffff,  "Data Register 2"},
-  {"D3",  0xffffffff,  "Data Register 3"},
-  {"D4",  0xffffffff,  "Data Register 4"},
-  {"D5",  0xffffffff,  "Data Register 5"},
-  {"D6",  0xffffffff,  "Data Register 6"},
-  {"D7",  0xffffffff,  "Data Register 7"},
-  {"A0",  0xffffffff,  "Address Register 0"},
-  {"A1",  0xffffffff,  "Address Register 1"},
-  {"A2",  0xffffffff,  "Address Register 2"},
-  {"A3",  0xffffffff,  "Address Register 3"},
-  {"A4",  0xffffffff,  "Address Register 4"},
-  {"A5",  0xffffffff,  "Address Register 5"},
-  {"A6",  0xffffffff,  "Address Register 6"},
-  {"A7",  0xffffffff,  "Address Register 7 (User Stack Pointer)"},
-  {"A7'" ,0xffffffff,  "Address Register 7 (Supervisor Stack Pointer)"},
-  {"PC",  0xffffffff,  "Program Counter"},
-  {"SR",  0x0000ffff,  "Status Register: T-S--III---XNZVC\n  T: Trace Mode\n  S: Supervisory Mode\n  I: Interrupt Mask Level\n  X: Extend\n  N: Negative\n  Z: Zero\n  V: Overflow\n  C: Carry"}
+  {(char*)"D0",  0xffffffff,  (char*)"Data Register 0"},
+  {(char*)"D1",  0xffffffff,  (char*)"Data Register 1"},
+  {(char*)"D2",  0xffffffff,  (char*)"Data Register 2"},
+  {(char*)"D3",  0xffffffff,  (char*)"Data Register 3"},
+  {(char*)"D4",  0xffffffff,  (char*)"Data Register 4"},
+  {(char*)"D5",  0xffffffff,  (char*)"Data Register 5"},
+  {(char*)"D6",  0xffffffff,  (char*)"Data Register 6"},
+  {(char*)"D7",  0xffffffff,  (char*)"Data Register 7"},
+  {(char*)"A0",  0xffffffff,  (char*)"Address Register 0"},
+  {(char*)"A1",  0xffffffff,  (char*)"Address Register 1"},
+  {(char*)"A2",  0xffffffff,  (char*)"Address Register 2"},
+  {(char*)"A3",  0xffffffff,  (char*)"Address Register 3"},
+  {(char*)"A4",  0xffffffff,  (char*)"Address Register 4"},
+  {(char*)"A5",  0xffffffff,  (char*)"Address Register 5"},
+  {(char*)"A6",  0xffffffff,  (char*)"Address Register 6"},
+  {(char*)"A7",  0xffffffff,  (char*)"Address Register 7 (User Stack Pointer)"},
+  {(char*)"A7'" ,0xffffffff,  (char*)"Address Register 7 (Supervisor Stack Pointer)"},
+  {(char*)"PC",  0xffffffff,  (char*)"Program Counter"},
+  {(char*)"SR",  0x0000ffff,  (char*)"Status Register: T-S--III---XNZVC\n  T: Trace Mode\n  S: Supervisory Mode\n  I: Interrupt Mask Level\n  X: Extend\n  N: Negative\n  Z: Zero\n  V: Overflow\n  C: Carry"}
 }; 
 
 
